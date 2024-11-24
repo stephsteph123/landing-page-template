@@ -1,0 +1,77 @@
+//Title.scss
+// @use "../../../styles/theme" as *;
+
+.title-primary {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  background: linear-gradient(
+    to bottom,
+    rgba(var(--primary-color-rgb), 1),
+    rgba(var(--primary-color-rgb), 1)
+  );
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.title-secondary {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  background: linear-gradient(
+    to bottom,
+    rgba(var(--secondary-color-rgb), 1),
+    rgba(var(--secondary-color-rgb), 1)
+  );
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+// Modifiers for different positions
+.title-center-top {
+  top: 20px;
+}
+
+.title-center-bottom {
+  bottom: 20px;
+}
+
+.title-left-top {
+  top: 20px;
+  left: 20%;
+  transform: translate(-50%, 0);
+}
+
+.title-left-bottom {
+  bottom: 20px;
+  left: 20%;
+  transform: translate(-50%, 0);
+}
+
+.title-right-top {
+  top: 20px;
+  right: 20%;
+  transform: translate(50%, 0);
+}
+
+.title-right-bottom {
+  bottom: 20px;
+  right: 20%;
+  transform: translate(50%, 0);
+}
+
+.title-title {
+  text-align: left;
+}
+
+.title-logo {
+  display: flex;
+}
