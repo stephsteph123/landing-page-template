@@ -1,3 +1,5 @@
+'use client'
+
 import React from "react";
 import "./ButtonIcon.scss";
 import "@fortawesome/fontawesome-free/css/all.css";

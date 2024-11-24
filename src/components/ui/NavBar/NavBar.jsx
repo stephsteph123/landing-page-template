@@ -1,6 +1,6 @@
 "use client";
 
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import "./NavBar.scss";
 import ButtonIcon from "../Icon/ButtonIcon";
 
@@ -15,7 +15,7 @@ export default function NavBar({
   ],
 }) {
   const [showNavBar, setShowNavBar] = useState(false);
-  const [top, setTop] = useState(false);
+  const [top, setTop] = useState(true);
   const [menuPosition, setMenuPosition] = useState(80);
 
   //decode props
@@ -45,14 +45,14 @@ export default function NavBar({
   // toggles no scroll on overflow
   useEffect(() => {
     if (showNavBar) {
-      document.body.style.overflow = "hidden";
+      document.documentElement.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
     }
 
     // Cleanup on unmount
     return () => {
-      document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
     };
   }, [showNavBar]);
 

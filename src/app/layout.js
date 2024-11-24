@@ -1,6 +1,7 @@
 import "./globals.css";
 import ThemeProvider from "@/components/ThemeProvider/ThemeProvider";
 import NavBar from "@/components/ui/NavBar/NavBar";
+import Footer from "@/components/ui/Footer/Footer";
 
 export const metadata = {
   title: "",
@@ -18,6 +19,7 @@ export default function RootLayout({ children }) {
         >
           <NavBar />
           {children}
+          <Footer/>
         </ThemeProvider>
       </body>
     </html>

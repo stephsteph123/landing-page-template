@@ -1,0 +1,56 @@
+// Footer.scss
+// @use "../../styles/theme";
+
+.footer {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 20px 0;
+  text-align: center;
+
+  .footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+
+    p {
+      margin: 0;
+      font-size: 0.9rem;
+    }
+  }
+}
+
+.footer-logo {
+  cursor: pointer;
+  transition: transform 0.5s ease, color 0.2s ease;
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.footer-content .row-1 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .leftside {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .row-1-address {
+      font-size: .7rem;
+    }
+  }
+}
+
+.footer-content .row-2{
+  display: flex;
+  opacity: .7;
+  padding: 0 10px;
+
+  .copy-right{
+    font-size: .7rem;
+  }
+}

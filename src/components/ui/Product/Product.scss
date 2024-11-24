@@ -1,0 +1,73 @@
+// Product.scss
+.product-card-parent {
+  display: flex;
+}
+
+// ProductCard.scss
+.product-card {
+  font-family: var(--font-family);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 400px;
+  align-items: center;
+
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: inset 1px 1px #ffffff4d, 0, 15px, 100px, #00ccff80;
+  }
+}
+
+.product-card-img {
+  width: 200px;
+}
+
+.product-middle {
+  &--primary {
+    color: var(--primary-color);
+  }
+  &--secondary {
+    color: var(--secondary-color);
+  }
+  &--white {
+    color: white;
+  }
+  &--black {
+    color: black;
+  }
+}
+
+.product-card-name {
+  text-align: center;
+  font-weight: var(--font-weight-bold);
+}
+.product-card-price {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.product-card-btn {
+  max-width: 100px !important;
+}
+
+.color-options {
+  display: flex;
+}
+
+.color-option {
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  opacity: .8;
+  margin: 2px;
+
+  &:hover {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+  &:active .clickable-circle{
+    stroke-width: 15;
+  }
+}
