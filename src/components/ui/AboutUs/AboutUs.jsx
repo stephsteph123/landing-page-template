@@ -77,13 +77,17 @@ export default function AboutUs({
                 </div>
               ))}
             </div>
-            <div className="about-us-write-up-mobile">
+            <div
+              className="about-us-write-up-mobile"
+              style={{
+                backgroundColor: updatedBackgroundColor,
+                color: color,
+              }}
+            >
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean
               posuere purus sed ipsum mattis posuere. Interdum et malesuada
               fames ac ante ipsum primis in faucibus. Sed rutrum laoreet luctus.
-              Nulla commodo dui id tempor maximus. Vivamus faucibus blandit
-              elit, eget ultrices dolor viverra non. Suspendisse tincidunt
-              aliquet sem vitae sollicitudin.
+              Nulla commodo dui id tempor maximus.
             </div>
           </div>
         </>

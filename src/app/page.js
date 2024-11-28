@@ -7,6 +7,7 @@ import Product from "@/components/ui/Product/Product";
 import Form from "@/components/ui/Form/Form";
 import AboutUs from "@/components/ui/AboutUs/AboutUs";
 import { productData } from "@/data/productDataPlaceholder";
+import Title from "@/components/ui/Title/Title";
 
 export default function Home() {
   const [mobile, setMobile] = useState(false);
@@ -20,9 +21,10 @@ export default function Home() {
 
   return (
     <div className={styles.container}>
+      <Title />
       <Product items={mobile ? productData.slice(0, 1) : productData} />
       <AboutUs mobile={mobile} />
-      {/* <Form /> */}
+      <Form />
     </div>
   );
 }

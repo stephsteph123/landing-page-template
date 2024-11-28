@@ -34,12 +34,12 @@ const Form = ({
   ],
 }) => {
   return (
-      <Card title={title}>
-        <form className="form-parent" onSubmit={onSubmit}>
-          <FormField fields={fields} />
-          <Button type="submit" label={label} />
-        </form>
-      </Card>
+    <Card title={title}>
+      <form className="form-parent" onSubmit={onSubmit}>
+        <FormField fields={fields} />
+        <Button type="submit" label={label} />
+      </form>
+    </Card>
   );
 };
 
