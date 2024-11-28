@@ -44,7 +44,7 @@ export default function NavBar({
   // hooks
   // toggles no scroll on overflow
   useEffect(() => {
-    if (showNavBar) {
+    if (showNavBar && !top) {
       document.documentElement.style.overflow = "hidden";
     } else {
       document.documentElement.style.overflow = "";
@@ -83,7 +83,8 @@ export default function NavBar({
     };
   }, []);
 
-  function onClick() {
+  function onClick(hello) {
+    console.log(hello);
     setShowNavBar(!showNavBar);
   }
 
@@ -97,7 +98,7 @@ export default function NavBar({
             <li
               key={index}
               className="top-nav-bar-list-item"
-              onClick={() => onClick(item.name)}
+              onClick={() => console.log("hello bitch")}
             >
               {item.name}
             </li>
@@ -129,7 +130,7 @@ export default function NavBar({
               </div>
               <ul>
                 {items.map((item, index) => (
-                  <li key={index} onClick={() => onClick(item.name)}>
+                  <li key={index} onClick={() => console.log("hello bitch")}>
                     <a href="#home">{item.name}</a>
                     <div className="navbar-arrow">
                       <ButtonIcon

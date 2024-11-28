@@ -6,10 +6,14 @@
   flex-direction: column;
 }
 
+.about-us-parent-mobile {
+  display: flex;
+}
+
 .about-us-child {
   display: flex;
   align-items: center;
-  margin-bottom: 30px; 
+  margin-bottom: 30px;
 }
 
 .about-us-img {
@@ -19,10 +23,26 @@
   border-radius: 22px;
 }
 
+.about-us-img-mobile {
+  max-width: 150px;
+  height: auto;
+  display: block;
+  border-radius: 12px;
+  margin-top: 10px;
+}
+
 .about-us-write-up {
   margin-left: 20px;
   max-width: 50%;
-  opacity: .8;
   padding: 30px;
   border-radius: 22px;
+}
+
+.about-us-write-up-mobile {
+  display: flex;
+  align-items: center;
+  max-width: 50%;
+  padding: 10px;
+  border-radius: 12px;
+  text-align: left;
 }
