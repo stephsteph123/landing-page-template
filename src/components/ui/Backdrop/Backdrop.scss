@@ -1,0 +1,131 @@
+/* Background.css */
+
+.app-background {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+
+  // variants
+  // 345 degree gradients
+  &--345-1 {
+    background: linear-gradient(
+      345deg,
+      var(--primary-color),
+      var(--secondary-color)
+    );
+  }
+
+  &--345-2 {
+    background: linear-gradient(
+      345deg,
+      var(--secondary-color),
+      var(--primary-color)
+    );
+  }
+
+  // linear gradients
+  &--linear-1 {
+    background: linear-gradient(
+      to bottom,
+      rgba(var(--primary-color-rgb), 1),
+      rgba(var(--primary-color-rgb), 0.8),
+      rgba(var(--primary-color-rgb), 0.6),
+      rgba(var(--primary-color-rgb), 0.4)
+    );
+  }
+
+  &--linear-2 {
+    background: linear-gradient(
+      to bottom,
+      rgba(var(--secondary-color-rgb), 1),
+      rgba(var(--secondary-color-rgb), 0.8),
+      rgba(var(--secondary-color-rgb), 0.6),
+      rgba(var(--secondary-color-rgb), 0.4)
+    );
+  }
+
+  // Textured
+  &--textured-1 {
+    opacity: 0.7;
+    background-color: rgba(var(--primary-color-rgb), 1);
+    background-image: radial-gradient(
+      circle,
+      rgba(255, 255, 255, 0.6) 10%,
+      rgba(0, 0, 0, 0) 20%
+    );
+    background-size: 10px 10px; /* Adjust the size of the circles here */
+  }
+
+  &--textured-2 {
+    opacity: 0.7;
+    background-color: rgba(var(--secondary-color-rgb), 1);
+    background-image: radial-gradient(
+      circle,
+      rgba(255, 255, 255, 0.6) 10%,
+      rgba(0, 0, 0, 0) 20%
+    );
+    background-size: 10px 10px; /* Adjust the size of the circles here */
+  }
+
+  &--textured-3 {
+    opacity: 0.7;
+    background-color: rgba(255, 255, 255);
+    background-image: radial-gradient(
+      circle,
+      rgba(var(--primary-color-rgb), 0.6) 10%,
+      rgba(0, 0, 0, 0) 20%
+    );
+    background-size: 10px 10px; /* Adjust the size of the circles here */
+  }
+
+  &--textured-4 {
+    opacity: 0.7;
+    background-color: rgba(255, 255, 255);
+    background-image: radial-gradient(
+      circle,
+      rgba(var(--secondary-color-rgb), 0.6) 10%,
+      rgba(0, 0, 0, 0) 20%
+    );
+    background-size: 10px 10px; /* Adjust the size of the circles here */
+  }
+}
+
+// shape shit
+.shape-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.shape {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 1;
+  // background-color: rgba(0, 204, 255, 0.7);
+  background-color: rgba(var(--secondary-color-rgb), 1);
+}
+
+.shape.small {
+  width: 50px;
+  height: 50px;
+}
+
+.shape.medium {
+  width: 100px;
+  height: 100px;
+}
+
+.shape.large {
+  width: 150px;
+  height: 150px;
+}

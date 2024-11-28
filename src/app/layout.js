@@ -2,6 +2,8 @@ import "./globals.css";
 import ThemeProvider from "@/components/ThemeProvider/ThemeProvider";
 import NavBar from "@/components/ui/NavBar/NavBar";
 import Footer from "@/components/ui/Footer/Footer";
+import Backdrop from "@/components/ui/Backdrop/Backdrop";
+import Banner from "@/components/ui/Banner/Banner";
 
 export const metadata = {
   title: "",
@@ -17,9 +19,12 @@ export default function RootLayout({ children }) {
           secondaryColor="#33c1ff"
           fontFamily="'Arial, sans-serif'"
         >
+          <Backdrop />
           <NavBar />
+          <Banner/>
+          
           {children}
-          <Footer/>
+          <Footer />
         </ThemeProvider>
       </body>
     </html>

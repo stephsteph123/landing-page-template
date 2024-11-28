@@ -1,0 +1,42 @@
+// Form
+
+.card {
+  color: var(--primary-color);
+}
+
+.form-parent {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  font-family: var(--font-family);
+  color: var(--primary-color);
+}
+
+.form .button {
+  display: flex;
+  justify-content: center;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-family);
+  font-size: 14px;
+}
+
+.form-input {
+  padding: 10px;
+  border: 1px solid var(--secondary-color);
+  border-radius: 4px;
+  font-family: var(--font-family);
+  margin-top: 4px;
+}
+
+.form-input-error {
+  border-color: red;
+}
+
+.form-error {
+  color: red;
+  margin-top: 4px;
+}
