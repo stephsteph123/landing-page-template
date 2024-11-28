@@ -2,7 +2,7 @@ import React from "react";
 import "./Title.scss";
 
 export default function Title({
-  Title = "Featured Products",
+  title = "Add Title",
   color = "primary",
   glow = "light",
 }) {
@@ -33,7 +33,7 @@ export default function Title({
         textShadow: updatedGlow,
       }}
     >
-      {Title}
+      {title}
     </div>
   );
 }

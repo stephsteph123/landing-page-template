@@ -21,9 +21,11 @@ export default function Home() {
 
   return (
     <div className={styles.container}>
-      <Title />
+      <Title title="Featured Products" />
       <Product items={mobile ? productData.slice(0, 1) : productData} />
+      <Title title="Our Story" />
       <AboutUs mobile={mobile} />
+      <Title title="Want to learn more?" />
       <Form />
     </div>
   );
