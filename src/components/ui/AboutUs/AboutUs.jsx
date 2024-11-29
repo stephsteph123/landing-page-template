@@ -25,7 +25,7 @@ export default function AboutUs({
     const [ref, isVisible] = useIntersectionObserver({
       root: null,
       rootMargin: "0px",
-      threshold: 0.9, // Trigger when 90% is visible
+      threshold: 0.9, 
     });
 
     // Update state when visible

@@ -22,6 +22,7 @@ export default function Title({
   const glowOptions = {
     dark: `0 0 10px rgba(0, 0, 0, 1), 0 0 20px rgba(0, 0, 0, 0.5)`,
     light: `0 0 10px rgba(255, 255, 255, 1), 0 0 20px rgba(255, 255, 255, 0.5)`,
+    none: ""
   };
   updatedGlow = glowOptions[glow];
 
