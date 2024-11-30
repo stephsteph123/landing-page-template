@@ -8,10 +8,12 @@ import AboutUs from "@/components/ui/AboutUs/AboutUs";
 import { productData } from "@/data/productDataPlaceholder";
 import Title from "@/components/ui/Title/Title";
 import useIntersectionObserver from "@/hooks/useIntersectionObserver";
+import { ContentfulProvider } from "../hooks/useContentful";
 
 export default function Home() {
   const [mobile, setMobile] = useState(false);
   const [viewed, setViewed] = useState([false, false, false]);
+  const [test, setTest] = useState(null);
 
   // set Mobile
   useEffect(() => {
@@ -24,7 +26,7 @@ export default function Home() {
   // creates refs for each div
   const refs = viewed.map((_, index) => {
     const [ref, isVisible] = useIntersectionObserver({
-      threshold: 0.5,
+      threshold: 0.2,
     });
 
     if (isVisible && !viewed[index]) {
@@ -38,31 +40,38 @@ export default function Home() {
     return ref;
   });
 
-  console.log(viewed);
-
   return (
-    <div className={styles.container}>
-      <div
-        className={viewed[0] ? styles["page-view-active"] : styles["page-view"]}
-        ref={refs[0]}
-      >
-        <Title title="Featured Products" />
-        <Product items={mobile ? productData.slice(0, 1) : productData} />
+    <ContentfulProvider>
+      <div className={styles.container}>
+        <div
+          className={
+            viewed[0] ? styles["page-view-active"] : styles["page-view"]
+          }
+          ref={refs[0]}
+        >
+          <Title title="Featured Products" />
+          {/* <img src={test} /> */}
+          <Product items={mobile ? productData.slice(0, 1) : productData} />
+        </div>
+        <div
+          className={
+            viewed[1] ? styles["page-view-active"] : styles["page-view"]
+          }
+          ref={refs[1]}
+        >
+          <Title title="Our Story" />
+          <AboutUs mobile={mobile} />
+        </div>
+        <div
+          className={
+            viewed[2] ? styles["page-view-active"] : styles["page-view"]
+          }
+          ref={refs[2]}
+        >
+          <Title title="Want to learn more?" />
+          <Form />
+        </div>
       </div>
-      <div
-        className={viewed[1] ? styles["page-view-active"] : styles["page-view"]}
-        ref={refs[1]}
-      >
-        <Title title="Our Story" />
-        <AboutUs mobile={mobile} />
-      </div>
-      <div
-        className={viewed[2] ? styles["page-view-active"] : styles["page-view"]}
-        ref={refs[2]}
-      >
-        <Title title="Want to learn more?" />
-        <Form />
-      </div>
-    </div>
+    </ContentfulProvider>
   );
 }

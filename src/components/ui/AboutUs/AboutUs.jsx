@@ -16,7 +16,7 @@ export default function AboutUs({
   mobile = false,
 }) {
   // Handling moving pieces
-  const [viewed, setViewed] = useState(new Array(images.length).fill(false)); // One `viewed` value per image.
+  const [viewed, setViewed] = useState(new Array(images.length).fill(false));
   //  Handle resize
   const [resize, setResize] = useState(400);
 
