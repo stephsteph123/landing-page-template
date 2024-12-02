@@ -8,12 +8,14 @@ import AboutUs from "@/components/ui/AboutUs/AboutUs";
 import { productData } from "@/data/productDataPlaceholder";
 import Title from "@/components/ui/Title/Title";
 import useIntersectionObserver from "@/hooks/useIntersectionObserver";
-import { ContentfulProvider } from "../hooks/useContentful";
+import { useContentful } from "../hooks/useContentful";
 
 export default function Home() {
   const [mobile, setMobile] = useState(false);
   const [viewed, setViewed] = useState([false, false, false]);
-  const [test, setTest] = useState(null);
+
+  // const data = useContentful();
+  // console.log(data);
 
   // set Mobile
   useEffect(() => {
@@ -41,7 +43,6 @@ export default function Home() {
   });
 
   return (
-    <ContentfulProvider>
       <div className={styles.container}>
         <div
           className={
@@ -50,7 +51,6 @@ export default function Home() {
           ref={refs[0]}
         >
           <Title title="Featured Products" />
-          {/* <img src={test} /> */}
           <Product items={mobile ? productData.slice(0, 1) : productData} />
         </div>
         <div
@@ -72,6 +72,5 @@ export default function Home() {
           <Form />
         </div>
       </div>
-    </ContentfulProvider>
   );
 }

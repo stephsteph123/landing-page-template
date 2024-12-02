@@ -1,11 +1,10 @@
-import React, { createContext, useContext, useState, useEffect } from "react";
+"use client";
+
+import { useState, useEffect } from "react";
 import { createClient } from "contentful";
 
-// Create the Context
-const ContentfulContext = createContext();
-
 // Contentful Provider Component
-export const ContentfulProvider = ({ children }) => {
+export const useContentful = () => {
   const [contentfulData, setContentfulData] = useState(null);
 
   // Initialize the Contentful client
@@ -18,7 +17,7 @@ export const ContentfulProvider = ({ children }) => {
   // Fetch an entry as an example
   const fetchEntry = async () => {
     try {
-      const entry = await client.getEntry("01cbIaQ9LpC8hBmglqFFID");
+      const entry = await client.getEntries();
       setContentfulData(entry);
     } catch (error) {
       console.error(`Error fetching entry: ${error}`);
@@ -30,19 +29,5 @@ export const ContentfulProvider = ({ children }) => {
     fetchEntry();
   }, []);
 
-  return (
-    <ContentfulContext.Provider value={contentfulData}>
-      {children}
-    </ContentfulContext.Provider>
-  );
+  return contentfulData;
 };
-
-// Custom hook to use the Contentful context
-export const useContentful = () => {
-  const context = useContext(ContentfulContext);
-  if (context === undefined) {
-    throw new Error("useContentful must be used within a ContentfulProvider");
-  }
-  return context;
-};
-

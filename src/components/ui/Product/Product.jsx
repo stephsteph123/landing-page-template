@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import React from "react";
 import ProductCard from "./ProductCard";
@@ -10,22 +10,22 @@ export default function Product({
       img: "/images/product_shirt_1.png",
       name: "test 1",
       price: 1,
-      function: () => console.log("hello world")
+      function: () => console.log("hello world"),
     },
     {
       img: "/images/product_shirt_1.png",
       name: "test 2",
       price: 14,
       fontColor: "--Secondary",
-      function: () => console.log("hello world")
+      function: () => console.log("hello world"),
     },
     {
       img: "/images/product_shirt_2.png",
       name: "test 3",
       price: 147,
       buttonVariant: "secondary",
-      function: () => console.log("hello world")
-    }
+      function: () => console.log("hello world"),
+    },
   ],
 }) {
   return (
@@ -38,7 +38,7 @@ export default function Product({
           price={item.price}
           fontColor={item.fontColor}
           buttonVariant={item.buttonVariant}
-          onClick= {item.function}
+          onClick={item.function}
         />
       ))}
     </div>

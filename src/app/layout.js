@@ -1,16 +1,21 @@
+"use client";
+
 import "./globals.css";
 import ThemeProvider from "@/components/ThemeProvider/ThemeProvider";
 import NavBar from "@/components/ui/NavBar/NavBar";
 import Footer from "@/components/ui/Footer/Footer";
 import Backdrop from "@/components/ui/Backdrop/Backdrop";
 import Banner from "@/components/ui/Banner/Banner";
+import { useContentful } from "../hooks/useContentful";
 
-export const metadata = {
-  title: "",
-  description: "Template",
-};
+// export const metadata = {
+//   title: "",
+//   description: "Template",
+// };
 
 export default function RootLayout({ children }) {
+  // const data = useContentful();
+  // console.log(data);
   return (
     <html lang="en">
       <body>
@@ -21,8 +26,12 @@ export default function RootLayout({ children }) {
         >
           <Backdrop />
           <NavBar />
-          <Banner/>
-          
+          <Banner
+            bannerImage="/images/placeholder-image-1-public.png"
+            blurDataURL="/images/placeholder-image-1-public-pixel.png"
+            bannerLogo="/images/placeholder-banner-logo-public.png"
+          />
+
           {children}
           <Footer />
         </ThemeProvider>

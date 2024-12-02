@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Picture from "./Picture";
 import useIntersectionObserver from "@/hooks/useIntersectionObserver";
 import "./AboutUs.scss";
@@ -20,25 +20,41 @@ export default function AboutUs({
   //  Handle resize
   const [resize, setResize] = useState(400);
 
-  // Create refs and observe visibility for each image dynamically
-  const refs = images.map((_, index) => {
-    const [ref, isVisible] = useIntersectionObserver({
-      root: null,
-      rootMargin: "0px",
-      threshold: 0.9, 
+  // Create refs and observe visibility for each image
+  const refs = useRef([]); // Array of refs for images
+
+  // Observers setup
+  useEffect(() => {
+    const observers = refs.current.map((ref, index) => {
+      if (!ref) return null;
+
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting && !viewed[index]) {
+            setViewed((prev) => {
+              const updated = [...prev];
+              updated[index] = true;
+              return updated;
+            });
+          }
+        },
+        {
+          root: null,
+          rootMargin: "0px",
+          threshold: 0.9,
+        }
+      );
+
+      observer.observe(ref);
+
+      return observer;
     });
 
-    // Update state when visible
-    if (isVisible && !viewed[index]) {
-      setViewed((prev) => {
-        const updated = [...prev];
-        updated[index] = true;
-        return updated;
-      });
-    }
-
-    return ref;
-  });
+    // Cleanup observers
+    return () => {
+      observers.forEach((observer) => observer && observer.disconnect());
+    };
+  }, [viewed]);
 
   // about-us-write-up background logic
   let updatedBackgroundColor = backgroundColor;
@@ -97,7 +113,7 @@ export default function AboutUs({
             <div
               key={index}
               className="about-us-child"
-              ref={refs[index]}
+              ref={(el) => (refs.current[index] = el)} 
               style={{
                 transform: `translateX(${
                   viewed[index] ? `${image.offset}px` : "0"

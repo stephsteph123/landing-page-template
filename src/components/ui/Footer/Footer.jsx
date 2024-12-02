@@ -4,7 +4,7 @@ import ButtonIcon from "../Icon/ButtonIcon";
 import "./Footer.scss";
 
 function Footer({
-  companyLogo = "/images//placeholder-logo.png",
+  companyLogo = "/images/placeholder-logo.png",
   address = `404 Imaginary Lane<br />Floor 99<br />Faketown, ZZ 12345<br />(000) 867-5309`,
   logoHeight = "5rem",
   icons = ["email", "insta"],
