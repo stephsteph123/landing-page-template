@@ -1,19 +1,24 @@
+// app/[slug]/page.js
+
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
+import { useParams } from "next/navigation";
+import Title from "@/components/ui/Title/Title";
 import styles from "./page.module.css";
+import AboutUs from "@/components/ui/AboutUs/AboutUs";
 import Product from "@/components/ui/Product/Product";
 import Form from "@/components/ui/Form/Form";
-import AboutUs from "@/components/ui/AboutUs/AboutUs";
+import { useContentful } from "@/hooks/useContentful";
 import { productData } from "@/data/productDataPlaceholder";
-import Title from "@/components/ui/Title/Title";
-import ThemeProvider from "@/components/ThemeProvider/ThemeProvider";
-import NavBar from "@/components/ui/NavBar/NavBar";
-import Footer from "@/components/ui/Footer/Footer";
-import Backdrop from "@/components/ui/Backdrop/Backdrop";
-import Banner from "@/components/ui/Banner/Banner";
 
-export default function Home() {
+// The dynamic page component
+export default function Page() {
+  const params = useParams();
+  const slug = params?.slug;
+
+  // console.log("Fetching page data for slug:", slug);
+
   const [mobile, setMobile] = useState(false);
   const [viewed, setViewed] = useState([false, false, false]);
 
@@ -67,48 +72,28 @@ export default function Home() {
   }, [viewed]);
 
   return (
-    <ThemeProvider
-      primaryColor="#ff5733"
-      secondaryColor="#33c1ff"
-      fontFamily="'Arial, sans-serif'"
-    >
-      <Backdrop />
-      <NavBar />
-      <Banner
-        bannerImage="/images/placeholder-image-1-public.png"
-        blurDataURL="/images/placeholder-image-1-public-pixel.png"
-        bannerLogo="/images/placeholder-banner-logo-public.png"
-      />
-      <div className={styles.container}>
-        <div
-          className={
-            viewed[0] ? styles["page-view-active"] : styles["page-view"]
-          }
-          ref={refs.current[0]}
-        >
-          <Title title="Featured Products" />
-          <Product items={mobile ? productData.slice(0, 1) : productData} />
-        </div>
-        <div
-          className={
-            viewed[1] ? styles["page-view-active"] : styles["page-view"]
-          }
-          ref={refs.current[1]}
-        >
-          <Title title="Our Story" />
-          <AboutUs mobile={mobile} />
-        </div>
-        <div
-          className={
-            viewed[2] ? styles["page-view-active"] : styles["page-view"]
-          }
-          ref={refs.current[2]}
-        >
-          <Title title="Want to learn more?" />
-          <Form />
-        </div>
+    <div className={styles.container}>
+      <div
+        className={viewed[0] ? styles["page-view-active"] : styles["page-view"]}
+        ref={refs.current[0]}
+      >
+        <Title title="Featured Products" />
+        <Product items={mobile ? productData.slice(0, 1) : productData} />
       </div>
-      <Footer />
-    </ThemeProvider>
+      <div
+        className={viewed[1] ? styles["page-view-active"] : styles["page-view"]}
+        ref={refs.current[1]}
+      >
+        <Title title="Our Story" />
+        <AboutUs mobile={mobile} />
+      </div>
+      <div
+        className={viewed[2] ? styles["page-view-active"] : styles["page-view"]}
+        ref={refs.current[2]}
+      >
+        <Title title="Want to learn more?" />
+        <Form />
+      </div>
+    </div>
   );
 }

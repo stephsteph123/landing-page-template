@@ -15,10 +15,10 @@ export const useContentful = () => {
   });
 
   // Fetch an entry as an example
-  const fetchEntry = async () => {
+  const fetchEntries = async () => {
     try {
-      const entry = await client.getEntries();
-      setContentfulData(entry);
+      const entries = await client.getEntries();
+      setContentfulData(entries.items);
     } catch (error) {
       console.error(`Error fetching entry: ${error}`);
     }
@@ -26,8 +26,8 @@ export const useContentful = () => {
 
   // Fetch data when the component mounts
   useEffect(() => {
-    fetchEntry();
+    fetchEntries();
   }, []);
 
-  return contentfulData;
+  return {contentfulData, fetchEntries};
 };
