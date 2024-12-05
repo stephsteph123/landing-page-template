@@ -3,7 +3,8 @@
 const nextConfig = {
   images: {
     domains: ["images.ctfassets.net"],
-    formats: ['image/avif', 'image/webp']
+    formats: ["image/avif", "image/webp"],
+    quality: 90,
   },
 };
 
