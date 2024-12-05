@@ -6,7 +6,7 @@ import "./BannerLogo.scss";
 export default function BannerLogo({
   bannerLogo = logo,
   logoPosition = "left-top",
-  opacity = ".7",
+  opacity = "1",
   logoHeight = 150,
   logoWidth= 500
 }) {

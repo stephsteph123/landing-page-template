@@ -29,5 +29,5 @@ export const useContentful = () => {
     fetchEntries();
   }, []);
 
-  return {contentfulData, fetchEntries};
+  return { contentfulData };
 };

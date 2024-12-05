@@ -1,8 +1,9 @@
+// AboutUs.js
+
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
 import Picture from "./Picture";
-import useIntersectionObserver from "@/hooks/useIntersectionObserver";
 import "./AboutUs.scss";
 
 export default function AboutUs({
@@ -54,7 +55,7 @@ export default function AboutUs({
     return () => {
       observers.forEach((observer) => observer && observer.disconnect());
     };
-  }, [viewed]);
+  }, [images, viewed]);
 
   // about-us-write-up background logic
   let updatedBackgroundColor = backgroundColor;
@@ -68,7 +69,6 @@ export default function AboutUs({
   }
 
   // Handling resize
-
   useEffect(() => {
     const handleResize = () => {
       const screenSize = window.innerWidth;
@@ -113,7 +113,9 @@ export default function AboutUs({
             <div
               key={index}
               className="about-us-child"
-              ref={(el) => (refs.current[index] = el)} 
+              ref={(el) => {
+                refs.current[index] = el;
+              }}
               style={{
                 transform: `translateX(${
                   viewed[index] ? `${image.offset}px` : "0"

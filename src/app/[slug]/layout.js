@@ -33,8 +33,6 @@ export async function generateStaticParams() {
     slug: slugify(entry.fields.title), // Use slugified title for the path
   }));
 
-  console.log("Generated static paths:", paths); // Verify paths are correct
-
   return paths.map((path) => ({
     params: path,
   }));
@@ -42,8 +40,6 @@ export async function generateStaticParams() {
 
 // Fetching metadata for the specific dynamic route
 export async function generateMetadata({ params }) {
-  console.log("Fetching metadata for slug:", params.slug); // Log here
-
   const entry = await client.getEntries({
     content_type: contentTypeId,
     "fields.title": params.slug, // Use the title from the URL as a filter
@@ -76,12 +72,25 @@ export default async function RootLayout({ children, params }) {
   }
 
   const data = entry.items[0].fields;
-  console.log("data", data.bannerImage.fields.file.url);
 
-  // Prepend `https:` to the URL if it's protocol-relative
+  // update the imgs to work with next.js
   const bannerImageUrl = data.bannerImage.fields.file.url.startsWith("//")
     ? `https:${data.bannerImage.fields.file.url}`
     : data.bannerImage.fields.file.url;
+
+  const bannerImagePixelUrl = data.bannerImagePixel.fields.file.url.startsWith(
+    "//"
+  )
+    ? `https:${data.bannerImagePixel.fields.file.url}`
+    : data.bannerImagePixel.fields.file.url;
+
+  const bannerLogoUrl = data.bannerLogo.fields.file.url.startsWith("//")
+    ? `https:${data.bannerLogo.fields.file.url}`
+    : data.bannerImagePixel.fields.file.url;
+
+  const footerLogoUrl = data.footerLogo.fields.file.url.startsWith("//")
+    ? `https:${data.footerLogo.fields.file.url}`
+    : data.bannerImagePixel.fields.file.url;
 
   return (
     <html lang="en">
@@ -95,11 +104,11 @@ export default async function RootLayout({ children, params }) {
           <NavBar />
           <Banner
             bannerImage={bannerImageUrl}
-            blurDataURL="/images/placeholder-image-1-public-pixel.png"
-            bannerLogo="/images/placeholder-banner-logo-public.png"
+            blurDataURL={bannerImagePixelUrl}
+            bannerLogo={bannerLogoUrl}
           />
           {children}
-          <Footer />
+          <Footer companyLogo={footerLogoUrl} />
         </ThemeProvider>
       </body>
     </html>
