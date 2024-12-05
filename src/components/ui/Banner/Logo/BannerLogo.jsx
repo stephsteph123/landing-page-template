@@ -12,7 +12,7 @@ export default function BannerLogo({
 }) {
   return (
     <Image
-      className={`banner-logo banner-${logoPosition}`}
+      // className={`banner-logo banner-${logoPosition}`}
       style={{ opacity: opacity }}
       height={logoHeight}
       src={bannerLogo}
