@@ -2,8 +2,7 @@
 
 const nextConfig = {
   images: {
-    domains: ["images.ctfassets.net"],
-    quality: 90,
+    domains: ["images.ctfassets.net"]
   },
 };
 
