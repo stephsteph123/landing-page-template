@@ -66,15 +66,15 @@ export default function Banner({
   return (
     <header className="banner" style={{ transform: `scale(${scale})` }}>
       <div className="banner-content">
-        <img
+        <Image
           src={bannerImage}
           alt="Background Image"
           height={height}
           width={100}
-          // placeholder="blur"
-          // quality={90}
-          // blurDataURL={blurDataURL}
-          // priority
+          placeholder="blur"
+          quality={90}
+          blurDataURL={blurDataURL}
+          priority
         />
       </div>
       {showLogo ? (
