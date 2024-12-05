@@ -12,10 +12,12 @@ import NavBar from "@/components/ui/NavBar/NavBar";
 import Footer from "@/components/ui/Footer/Footer";
 import Backdrop from "@/components/ui/Backdrop/Backdrop";
 import Banner from "@/components/ui/Banner/Banner";
+import Dialog from "@/components/ui/Dialog/Dialog";
 
 export default function Home() {
   const [mobile, setMobile] = useState(false);
   const [viewed, setViewed] = useState([false, false, false]);
+  const [isDialogOpen, setIsDialogOpen] = useState(true);
 
   // Create refs and initialize them for each section
   const refs = useRef([]);
@@ -66,6 +68,30 @@ export default function Home() {
     };
   }, [viewed]);
 
+
+  // Dialog Logic
+  const openDialog = () => {
+    setIsDialogOpen(true);
+  };
+
+  const closeDialog = () => {
+    setIsDialogOpen(false);
+  };
+
+    // toggles no scroll on overflow
+    useEffect(() => {
+      if (isDialogOpen) {
+        document.documentElement.style.overflow = "hidden";
+      } else {
+        document.documentElement.style.overflow = "";
+      }
+  
+      // Cleanup on unmount
+      return () => {
+        document.documentElement.style.overflow = "";
+      };
+    }, [isDialogOpen]);
+
   return (
     <ThemeProvider
       primaryColor="#ff5733"
@@ -79,6 +105,8 @@ export default function Home() {
         blurDataURL="/images/placeholder-image-1-public-pixel.png"
         bannerLogo="/images/placeholder-banner-logo-public.png"
       />
+      <Dialog isOpen={isDialogOpen} onClose={closeDialog}>
+      </Dialog>
       <div className={styles.container}>
         <div
           className={
