@@ -24,11 +24,11 @@ const Dialog = ({ isOpen, onClose, children }) => {
             If you're interested in collaborating on a project or have any
             questions, feel free to message me here:
           </p>
-          <a href="mailto:your-email@example.com" className="popup-link">
+          <a href="mailto:stephrowesoft@gmail.com" className="popup-link">
             Message Me
           </a>
           <p>Want to see more? Check out my website here:</p>
-          <a href="https://your-website.com" className="popup-link">
+          <a href="https://www.stephrowe.ca" className="popup-link">
             Visit My Website
           </a>
         </div>

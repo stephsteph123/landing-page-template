@@ -3,9 +3,9 @@
 import React, { useState, useEffect } from "react";
 import "./NavBar.scss";
 import ButtonIcon from "../Icon/ButtonIcon";
+import Dialog from "@/components/ui/Dialog/Dialog";
 
 export default function NavBar({
-  // onClick = () => console.log("hello world"),
   topVariant = "--white-transparent",
   items = [
     { href: "/", name: "Home" },
@@ -17,6 +17,7 @@ export default function NavBar({
   const [showNavBar, setShowNavBar] = useState(false);
   const [top, setTop] = useState(true);
   const [menuPosition, setMenuPosition] = useState(80);
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   //decode props
   const biVariant = {
@@ -40,21 +41,6 @@ export default function NavBar({
     "--black-gradient": "secondary",
     "--black-transparent": "secondary",
   };
-
-  // hooks
-  // toggles no scroll on overflow
-  useEffect(() => {
-    if (showNavBar && !top) {
-      document.documentElement.style.overflow = "hidden";
-    } else {
-      document.documentElement.style.overflow = "";
-    }
-
-    // Cleanup on unmount
-    return () => {
-      document.documentElement.style.overflow = "";
-    };
-  }, [showNavBar]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -88,8 +74,36 @@ export default function NavBar({
     setShowNavBar(!showNavBar);
   }
 
+  // Dialog Logic
+  const openDialog = () => {
+    event.preventDefault();
+    setIsDialogOpen(true);
+  };
+
+  const closeDialog = () => {
+    setIsDialogOpen(false);
+  };
+
+  // hooks
+  // toggles no scroll on overflow
+
+  useEffect(() => {
+    // If either isDialogOpen or showNavBar is true, disable scrolling
+    if (isDialogOpen || (showNavBar && !top)) {
+      document.documentElement.style.overflow = "hidden";
+    } else {
+      document.documentElement.style.overflow = "";
+    }
+
+    // Cleanup on unmount or when dependencies change
+    return () => {
+      document.documentElement.style.overflow = "";
+    };
+  }, [isDialogOpen, showNavBar, top]);
+
   return (
     <>
+      <Dialog isOpen={isDialogOpen} onClose={closeDialog}></Dialog>
       <nav
         className={`top-nav-bar ${top ? "show" : ""} top-nav-bar${topVariant}`}
       >
@@ -98,7 +112,7 @@ export default function NavBar({
             <li
               key={index}
               className="top-nav-bar-list-item"
-              onClick={() => console.log("hello bitch")}
+              onClick={() => openDialog()}
             >
               {item.name}
             </li>
@@ -130,7 +144,7 @@ export default function NavBar({
               </div>
               <ul>
                 {items.map((item, index) => (
-                  <li key={index} onClick={() => console.log("hello bitch")}>
+                  <li key={index} onClick={() => openDialog()}>
                     <a href="#home">{item.name}</a>
                     <div className="navbar-arrow">
                       <ButtonIcon

@@ -2,6 +2,7 @@
 import React from "react";
 import ButtonIcon from "../Icon/ButtonIcon";
 import "./Footer.scss";
+import Dialog from "@/components/ui/Dialog/Dialog";
 
 function Footer({
   companyLogo = "/images/placeholder-logo.png",

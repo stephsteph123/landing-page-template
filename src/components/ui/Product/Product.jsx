@@ -1,6 +1,8 @@
+// Product.js
+
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import ProductCard from "./ProductCard";
 import "./Product.scss";
 
@@ -10,21 +12,21 @@ export default function Product({
       img: "/images/product_shirt_1.png",
       name: "test 1",
       price: 1,
-      function: () => console.log("hello world"),
+      function: openDialog,
     },
     {
       img: "/images/product_shirt_1.png",
       name: "test 2",
       price: 14,
       fontColor: "--Secondary",
-      function: () => console.log("hello world"),
+      function: openDialog,
     },
     {
       img: "/images/product_shirt_2.png",
       name: "test 3",
       price: 147,
       buttonVariant: "secondary",
-      function: () => console.log("hello world"),
+      function: openDialog,
     },
   ],
 }) {

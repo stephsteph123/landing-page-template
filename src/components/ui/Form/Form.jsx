@@ -37,7 +37,7 @@ const Form = ({
     <Card title={title}>
       <form className="form-parent" onSubmit={onSubmit}>
         <FormField fields={fields} />
-        <Button type="submit" label={label} />
+        <Button type="submit" label={label} onClick={onSubmit}/>
       </form>
     </Card>
   );

@@ -1,6 +1,8 @@
-'use client'
+// ProductCard.js
 
-import React from "react";
+"use client";
+
+import React, { useEffect } from "react";
 import Button from "../Button/Button";
 import "./Product.scss";
 
@@ -10,10 +12,10 @@ export default function ProductCard({
   img = shirt1,
   name = "Test",
   price = "45",
-  onClick = () => console.log("test"),
+  onClick = () => console.log("Hello ProductCard"),
 }) {
   return (
-    <div className="product-card" onClick={onClick}>
+    <div className="product-card">
       <img className="product-card-img" src={img} />
       <div className={`product-middle${fontColor}`}>
         <div className="product-card-name">{name}</div>
@@ -23,6 +25,7 @@ export default function ProductCard({
         className="product-card-btn"
         label="Buy Now"
         variant={buttonVariant}
+        onClick={onClick}
       />
     </div>
   );

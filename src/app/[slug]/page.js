@@ -10,7 +10,7 @@ import AboutUs from "@/components/ui/AboutUs/AboutUs";
 import Product from "@/components/ui/Product/Product";
 import Form from "@/components/ui/Form/Form";
 import { useContentful } from "@/hooks/useContentful";
-import { productData } from "@/data/productDataPlaceholder";
+import Dialog from "@/components/ui/Dialog/Dialog";
 
 // The dynamic page component
 export default function Page() {
@@ -22,8 +22,7 @@ export default function Page() {
   const [newProductData, setNewProductData] = useState([]);
   const [newAboutData, setNewAboutData] = useState([]);
   const memoizedContentfulData = useMemo(() => data?.contentfulData, [data]);
-
-  console.log(newProductData);
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   useEffect(() => {
     if (Array.isArray(memoizedContentfulData)) {
@@ -37,19 +36,19 @@ export default function Page() {
             img: `https:${update[0].fields.productImage1.fields.file.url}`,
             name: update[0].fields.productName1 || "Unnamed Product",
             price: update[0].fields.productPrice1 || 0,
-            function: () => console.log("hello world"),
+            function: openDialog,
           },
           {
             img: `https:${update[0].fields.productImage2.fields.file.url}`,
             name: update[0].fields.productName2 || "Unnamed Product",
             price: update[0].fields.productPrice2 || 0,
-            function: () => console.log("hello world"),
+            function: openDialog,
           },
           {
             img: `https:${update[0].fields.productImage3.fields.file.url}`,
             name: update[0].fields.productName3 || "Unnamed Product",
             price: update[0].fields.productPrice3 || 0,
-            function: () => console.log("hello world"),
+            function: openDialog,
           },
         ]);
 
@@ -120,8 +119,33 @@ export default function Page() {
     };
   }, [viewed]);
 
+  // Dialog Logic
+  const openDialog = () => {
+    event.preventDefault();
+    setIsDialogOpen(true);
+  };
+
+  const closeDialog = () => {
+    setIsDialogOpen(false);
+  };
+
+  // toggles no scroll on overflow
+  useEffect(() => {
+    if (isDialogOpen) {
+      document.documentElement.style.overflow = "hidden";
+    } else {
+      document.documentElement.style.overflow = "";
+    }
+
+    // Cleanup on unmount
+    return () => {
+      document.documentElement.style.overflow = "";
+    };
+  }, [isDialogOpen]);
+
   return (
     <div className={styles.container}>
+      <Dialog isOpen={isDialogOpen} onClose={closeDialog}></Dialog>
       <div
         className={viewed[0] ? styles["page-view-active"] : styles["page-view"]}
         ref={refs.current[0]}
@@ -141,7 +165,7 @@ export default function Page() {
         ref={refs.current[2]}
       >
         <Title title="Want to learn more?" />
-        <Form />
+        <Form  onSubmit={openDialog}/>
       </div>
     </div>
   );
