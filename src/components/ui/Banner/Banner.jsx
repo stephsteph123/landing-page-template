@@ -71,10 +71,10 @@ export default function Banner({
           alt="Background Image"
           height={height}
           width={100}
-          placeholder="blur"
-          quality={90}
-          blurDataURL={blurDataURL}
-          priority
+          // placeholder="blur"
+          // quality={90}
+          // blurDataURL={blurDataURL}
+          // priority
         />
       </div>
       {showLogo ? (
