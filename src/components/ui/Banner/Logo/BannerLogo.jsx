@@ -1,10 +1,9 @@
 import Image from "next/image";
 import React from "react";
-import logo from "../../../../assets/placeholder-logo.png";
 import "./BannerLogo.scss";
 
 export default function BannerLogo({
-  bannerLogo = logo,
+  bannerLogo,
   logoPosition = "left-top",
   opacity = "1",
   logoHeight = 150,
