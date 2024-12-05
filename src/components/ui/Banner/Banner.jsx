@@ -66,7 +66,7 @@ export default function Banner({
   return (
     <header className="banner" style={{ transform: `scale(${scale})` }}>
       <div className="banner-content">
-        <Image
+        <img
           src={bannerImage}
           alt="Background Image"
           height={height}
