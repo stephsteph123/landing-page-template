@@ -17,7 +17,7 @@ export default function Banner({
   opacity,
 }) {
   const [scale, setScale] = useState(1);
-  const [height, setHeight] = useState(800);
+  // const [height, setHeight] = useState(800);
   const [logoHeight, setLogoHight] = useState(150);
   const [logoWidth, setLogoWidth] = useState(400);
   const [fontSize, setFontSize] = useState("40px");
@@ -41,11 +41,11 @@ export default function Banner({
   useEffect(() => {
     const handleResize = () => {
       const screenSize = window.innerWidth;
-      const newHeight = Math.max(screenSize / 2);
+      // const newHeight = Math.max(screenSize / 2);
       const newFontSize = Math.max(screenSize / 40);
       const newLogoHeight = Math.max(screenSize / 8);
       const newLogoWidth = Math.max(screenSize / 4);
-      setHeight(newHeight);
+      // setHeight(newHeight);
       setLogoWidth(newLogoWidth);
       setFontSize(newFontSize);
       setLogoHight(newLogoHeight);
@@ -69,8 +69,8 @@ export default function Banner({
         <Image
           src={bannerImage}
           alt="Background Image"
-          height={height}
-          width={100}
+          height={800}
+          width={400}
           placeholder="blur"
           quality={90}
           blurDataURL={blurDataURL}
