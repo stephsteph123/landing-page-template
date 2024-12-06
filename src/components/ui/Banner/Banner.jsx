@@ -63,16 +63,21 @@ export default function Banner({
     };
   }, []);
 
+  const customLoader = ({ src, width, quality }) => {
+    return `${src}?w=${width}&q=${quality || 80}`;
+  };
+
   return (
     <header className="banner" style={{ transform: `scale(${scale})` }}>
       <div className="banner-content">
         <Image
+          loader={customLoader}
           src={bannerImage}
           alt="Background Image"
           height={800}
           width={400}
           placeholder="blur"
-          quality={90}
+          quality={100}
           blurDataURL={blurDataURL}
           priority
         />

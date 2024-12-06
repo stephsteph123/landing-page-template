@@ -4,7 +4,7 @@ import React from "react";
 import ButtonIcon from "../Icon/ButtonIcon";
 import "./Dialog.scss";
 
-const Dialog = ({ isOpen, onClose, children }) => {
+const Dialog = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
 
   return (
