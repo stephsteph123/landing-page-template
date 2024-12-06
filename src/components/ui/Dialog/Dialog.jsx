@@ -21,14 +21,22 @@ const Dialog = ({ isOpen, onClose, children }) => {
         </header>
         <div className="dialog-body">
           <p>
-            If you're interested in collaborating on a project or have any
+            If you&apos;re interested in collaborating on a project or have any
             questions, feel free to message me here:
           </p>
-          <a href="mailto:stephrowesoft@gmail.com" className="popup-link">
+          <a
+            href="mailto:stephrowesoft@gmail.com"
+            className="popup-link"
+            aria-label="Send me an email"
+          >
             Message Me
           </a>
           <p>Want to see more? Check out my website here:</p>
-          <a href="https://www.stephrowe.ca" className="popup-link">
+          <a
+            href="https://www.stephrowe.ca"
+            className="popup-link"
+            aria-label="Visit my website"
+          >
             Visit My Website
           </a>
         </div>
