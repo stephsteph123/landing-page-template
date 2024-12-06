@@ -1,5 +1,8 @@
-// "use client";
-import React from "react";
+// Footer.js
+
+"use client";
+
+import React, { useEffect, useState } from "react";
 import ButtonIcon from "../Icon/ButtonIcon";
 import "./Footer.scss";
 import Dialog from "@/components/ui/Dialog/Dialog";
@@ -10,8 +13,35 @@ function Footer({
   logoHeight = "5rem",
   icons = ["email", "insta"],
 }) {
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+
+  // Dialog Logic
+  const openDialog = () => {
+    event.preventDefault();
+    setIsDialogOpen(true);
+  };
+
+  const closeDialog = () => {
+    setIsDialogOpen(false);
+  };
+
+  // toggles no scroll on overflow
+  useEffect(() => {
+    if (isDialogOpen) {
+      document.documentElement.style.overflow = "hidden";
+    } else {
+      document.documentElement.style.overflow = "";
+    }
+
+    // Cleanup on unmount
+    return () => {
+      document.documentElement.style.overflow = "";
+    };
+  }, [isDialogOpen]);
+
   return (
     <footer className="footer">
+      <Dialog isOpen={isDialogOpen} onClose={closeDialog}></Dialog>
       <div className="footer-content">
         <div className="row-1">
           <div className="leftside">
@@ -20,6 +50,7 @@ function Footer({
               src={companyLogo}
               style={{ height: logoHeight }}
               alt="company logo"
+              onClick={openDialog}
             />
             <div
               className="row-1-address"
@@ -28,7 +59,7 @@ function Footer({
           </div>
           <div className="symbols">
             {icons.map((item, index) => (
-              <ButtonIcon icon={item} key={index}/>
+              <ButtonIcon icon={item} key={index} onClick={openDialog}/>
             ))}
           </div>
         </div>

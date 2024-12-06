@@ -11,6 +11,7 @@ import Product from "@/components/ui/Product/Product";
 import Form from "@/components/ui/Form/Form";
 import { useContentful } from "@/hooks/useContentful";
 import Dialog from "@/components/ui/Dialog/Dialog";
+import Toast from "@/components/ui/Toast/Toast";
 
 // The dynamic page component
 export default function Page() {
@@ -146,6 +147,7 @@ export default function Page() {
   return (
     <div className={styles.container}>
       <Dialog isOpen={isDialogOpen} onClose={closeDialog}></Dialog>
+      <Toast/>
       <div
         className={viewed[0] ? styles["page-view-active"] : styles["page-view"]}
         ref={refs.current[0]}
