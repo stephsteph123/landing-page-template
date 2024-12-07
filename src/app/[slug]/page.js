@@ -20,6 +20,7 @@ export default function Page() {
   const slug = params?.slug;
   const data = useContentful();
   const [mobile, setMobile] = useState(false);
+  const [ipad, setIpad] = useState(false);
   const [viewed, setViewed] = useState([false, false, false]);
   const [newProductData, setNewProductData] = useState([]);
   const [newAboutData, setNewAboutData] = useState([]);
@@ -82,7 +83,12 @@ export default function Page() {
 
   // Set mobile view based on screen size
   useEffect(() => {
-    const handleMobile = () => setMobile(window.innerWidth < 800);
+    const handleMobile = () =>
+      setMobile(
+        window.innerWidth < 800
+          ? true
+          : setIpad(window.innerWidth < 1200 ? true : false)
+      );
     handleMobile();
     window.addEventListener("resize", handleMobile);
     return () => window.removeEventListener("resize", handleMobile);
@@ -148,13 +154,21 @@ export default function Page() {
   return (
     <div className={styles.container}>
       <Dialog isOpen={isDialogOpen} onClose={closeDialog}></Dialog>
-      <Toast/>
+      <Toast />
       <div
         className={viewed[0] ? styles["page-view-active"] : styles["page-view"]}
         ref={refs.current[0]}
       >
         <Title title="Featured Products" />
-        <Product items={mobile ? newProductData.slice(0, 1) : newProductData} />
+        <Product
+          items={
+            mobile
+              ? newProductData.slice(0, 1)
+              : ipad
+              ? newProductData.slice(0, 2)
+              : newProductData
+          }
+        />
       </div>
       <div
         className={viewed[1] ? styles["page-view-active"] : styles["page-view"]}
@@ -168,7 +182,7 @@ export default function Page() {
         ref={refs.current[2]}
       >
         <Title title="Want to learn more?" />
-        <Form  onSubmit={openDialog}/>
+        <Form onSubmit={openDialog} />
       </div>
     </div>
   );

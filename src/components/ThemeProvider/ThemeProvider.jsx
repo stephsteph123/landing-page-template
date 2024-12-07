@@ -31,9 +31,9 @@ const ThemeProvider = ({
   const primaryColorRBG = hexToRgb(primaryColor);
   const secondaryColorRBG = hexToRgb(secondaryColor);
 
-  // Darken by 20%
-  const primaryColorDark = darkenColor(primaryColor, 0.2);
-  const secondaryColorDark = darkenColor(secondaryColor, 0.2);
+  // Darken by 40%
+  const primaryColorDark = darkenColor(primaryColor, 0.4);
+  const secondaryColorDark = darkenColor(secondaryColor, 0.4);
 
   useEffect(() => {
     // Set the global CSS variables on the root element
