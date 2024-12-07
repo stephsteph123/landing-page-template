@@ -1,4 +1,6 @@
-import React from "react";
+'use client'
+
+import React, { useEffect } from "react";
 
 // Utility to convert hex to RGB
 const hexToRgb = (hex) => {
@@ -29,21 +31,23 @@ const ThemeProvider = ({
   const primaryColorRBG = hexToRgb(primaryColor);
   const secondaryColorRBG = hexToRgb(secondaryColor);
 
-  // Darken by 15%
+  // Darken by 20%
   const primaryColorDark = darkenColor(primaryColor, 0.2);
   const secondaryColorDark = darkenColor(secondaryColor, 0.2);
 
-  const themeStyles = {
-    "--primary-color": primaryColor,
-    "--secondary-color": secondaryColor,
-    "--font-family": fontFamily,
-    "--primary-color-rgb": primaryColorRBG,
-    "--secondary-color-rgb": secondaryColorRBG,
-    "--primary-color-dark": primaryColorDark,
-    "--secondary-color-dark": secondaryColorDark,
-  };
+  useEffect(() => {
+    // Set the global CSS variables on the root element
+    const root = document.documentElement;
+    root.style.setProperty("--primary-color", primaryColor);
+    root.style.setProperty("--secondary-color", secondaryColor);
+    root.style.setProperty("--font-family", fontFamily);
+    root.style.setProperty("--primary-color-rgb", primaryColorRBG);
+    root.style.setProperty("--secondary-color-rgb", secondaryColorRBG);
+    root.style.setProperty("--primary-color-dark", primaryColorDark);
+    root.style.setProperty("--secondary-color-dark", secondaryColorDark);
+  }, [primaryColor, secondaryColor, fontFamily, primaryColorRBG, secondaryColorRBG, primaryColorDark, secondaryColorDark]);
 
-  return <div style={themeStyles}>{children}</div>;
+  return <>{children}</>;
 };
 
 export default ThemeProvider;
