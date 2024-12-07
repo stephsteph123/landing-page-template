@@ -1,31 +1,32 @@
-// Product.js
+// Product2/Product.js
 
 "use client";
 
-import React, { useEffect } from "react";
+import React from "react";
 import ProductCard from "./ProductCard";
 import "./Product.scss";
 
 export default function Product({
   items = [
     {
-      img: "/images/product_shirt_1.png",
-      name: "test 1",
-      price: 1,
+      cardLogo: "/images/placeholder-logo.png",
+      productImg: "/images/product_shirt_1.png",
+      title: "test 1",
+      productPrice: 1,
       function: openDialog,
     },
     {
-      img: "/images/product_shirt_1.png",
-      name: "test 2",
-      price: 14,
-      fontColor: "--Secondary",
+      cardLogo: "/images/placeholder-logo.png",
+      productImg: "/images/product_shirt_1.png",
+      title: "test 2",
+      productPrice: 14,
       function: openDialog,
     },
     {
-      img: "/images/product_shirt_2.png",
-      name: "test 3",
-      price: 147,
-      buttonVariant: "secondary",
+      cardLogo: "/images/placeholder-logo.png",
+      productImg: "/images/product_shirt_1.png",
+      title: "test 3",
+      productPrice: 147,
       function: openDialog,
     },
   ],
@@ -35,11 +36,10 @@ export default function Product({
       {items.map((item, index) => (
         <ProductCard
           key={index}
-          img={item.img}
-          name={item.name}
-          price={item.price}
-          fontColor={item.fontColor}
-          buttonVariant={item.buttonVariant}
+          cardLogo={item.cardLogo}
+          productImg={item.productImg}
+          title={item.title}
+          productPrice={item.productPrice}
           onClick={item.function}
         />
       ))}

@@ -7,8 +7,7 @@ import { useParams } from "next/navigation";
 import Title from "@/components/ui/Title/Title";
 import styles from "./page.module.css";
 import AboutUs from "@/components/ui/AboutUs/AboutUs";
-// import Product from "@/components/ui/Product/Product";
-import Product from "@/components/ui/Product2/Product";
+import Product from "@/components/ui/Product/Product";
 import Form from "@/components/ui/Form/Form";
 import { useContentful } from "@/hooks/useContentful";
 import Dialog from "@/components/ui/Dialog/Dialog";
@@ -36,21 +35,24 @@ export default function Page() {
       if (update.length > 0) {
         setNewProductData([
           {
-            img: `https:${update[0].fields.productImage1.fields.file.url}`,
-            name: update[0].fields.productName1 || "Unnamed Product",
-            price: update[0].fields.productPrice1 || 0,
+            cardLogo: update[0].fields.footerLogo.fields.file.url,
+            productImg: `https:${update[0].fields.productImage1.fields.file.url}`,
+            title: update[0].fields.productName1 || "Unnamed Product",
+            productPrice: update[0].fields.productPrice1 || 0,
             function: openDialog,
           },
           {
-            img: `https:${update[0].fields.productImage2.fields.file.url}`,
-            name: update[0].fields.productName2 || "Unnamed Product",
-            price: update[0].fields.productPrice2 || 0,
+            cardLogo: update[0].fields.footerLogo.fields.file.url,
+            productImg: `https:${update[0].fields.productImage2.fields.file.url}`,
+            title: update[0].fields.productName2 || "Unnamed Product",
+            productPrice: update[0].fields.productPrice2 || 0,
             function: openDialog,
           },
           {
-            img: `https:${update[0].fields.productImage3.fields.file.url}`,
-            name: update[0].fields.productName3 || "Unnamed Product",
-            price: update[0].fields.productPrice3 || 0,
+            cardLogo: update[0].fields.footerLogo.fields.file.url,
+            productImg: `https:${update[0].fields.productImage3.fields.file.url}`,
+            title: update[0].fields.productName3 || "Unnamed Product",
+            productPrice: update[0].fields.productPrice3 || 0,
             function: openDialog,
           },
         ]);
@@ -150,6 +152,8 @@ export default function Page() {
       document.documentElement.style.overflow = "";
     };
   }, [isDialogOpen]);
+
+  console.log(newProductData);
 
   return (
     <div className={styles.container}>

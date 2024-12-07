@@ -16,9 +16,9 @@
   transition: opacity 0.3s ease, transform 0.3s ease;
 
   &.show {
-    opacity: 1; /* Show when the class 'show' is added */
+    opacity: 1; 
     transform: translateY(0);
-    pointer-events: auto; /* Enable interaction */
+    pointer-events: auto; 
   }
 }
 
