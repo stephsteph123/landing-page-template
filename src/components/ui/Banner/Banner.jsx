@@ -15,11 +15,13 @@ export default function Banner({
   showLogo = true,
   bannerLogo = "/images/placeholder-banner-logo-public.png",
   opacity,
+  logoHeight = 150,
+  logoWidth = 300
 }) {
   const [scale, setScale] = useState(1);
   // const [height, setHeight] = useState(800);
-  const [logoHeight, setLogoHight] = useState(150);
-  const [logoWidth, setLogoWidth] = useState(400);
+  const [newLogoHeight, setNewLogoHight] = useState(logoHeight);
+  const [newLogoWidth, setNewLogoWidth] = useState(logoWidth);
   const [fontSize, setFontSize] = useState("40px");
   const [logoPosition, setLogoPositionn] = useState("left-top");
 
@@ -46,9 +48,9 @@ export default function Banner({
       const newLogoHeight = Math.max(screenSize / 8);
       const newLogoWidth = Math.max(screenSize / 4);
       // setHeight(newHeight);
-      setLogoWidth(newLogoWidth);
+      setNewLogoWidth(newLogoWidth);
       setFontSize(newFontSize);
-      setLogoHight(newLogoHeight);
+      setNewLogoHight(newLogoHeight);
       if (screenSize < 800) {
         setLogoPositionn("center-bottom");
       } else {
@@ -87,8 +89,8 @@ export default function Banner({
           bannerLogo={bannerLogo}
           logoPosition={logoPosition}
           opacity={opacity}
-          logoHeight={logoHeight}
-          logoWidth={logoWidth}
+          logoHeight={newLogoHeight}
+          logoWidth={newLogoWidth}
         />
       ) : (
         <BannerTitle
