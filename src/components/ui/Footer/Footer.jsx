@@ -59,7 +59,7 @@ function Footer({
           </div>
           <div className="symbols">
             {icons.map((item, index) => (
-              <ButtonIcon icon={item} key={index} onClick={openDialog}/>
+              <ButtonIcon icon={item} key={index} variant="white" transparent size="medium" onClick={openDialog}/>
             ))}
           </div>
         </div>
