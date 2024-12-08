@@ -7,7 +7,7 @@ export default function BannerLogo({
   logoPosition = "left-top",
   opacity = "1",
   logoHeight = 150,
-  logoWidth= 500
+  logoWidth= 400
 }) {
   return (
     <Image
