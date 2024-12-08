@@ -31,13 +31,6 @@ export default function ProductCard({
           </div>
         </div>
         <div className="card-body">
-          <div className="product-desc">
-            <span className="product-title">
-              {title}
-              {/* <span className="badge"> New </span> */}
-            </span>
-            <span className="product-caption">{productCaption}</span>
-          </div>
           <div className="product-properties">
             <span className="product-prop-title">
               <h4>Details</h4>
