@@ -40,6 +40,7 @@ export default function Page() {
             productImg: `https:${update[0].fields.productImage1.fields.file.url}`,
             title: update[0].fields.productName1 || "Unnamed Product",
             productPrice: update[0].fields.productPrice1 || 0,
+            subcription: update[0].fields.subscriptionFrequency,
             function: openDialog,
           },
           {
@@ -47,6 +48,7 @@ export default function Page() {
             productImg: `https:${update[0].fields.productImage2.fields.file.url}`,
             title: update[0].fields.productName2 || "Unnamed Product",
             productPrice: update[0].fields.productPrice2 || 0,
+            subcription: update[0].fields.subscriptionFrequency,
             function: openDialog,
           },
           {
@@ -54,6 +56,7 @@ export default function Page() {
             productImg: `https:${update[0].fields.productImage3.fields.file.url}`,
             title: update[0].fields.productName3 || "Unnamed Product",
             productPrice: update[0].fields.productPrice3 || 0,
+            subcription: update[0].fields.subscriptionFrequency,
             function: openDialog,
           },
         ]);
@@ -153,8 +156,6 @@ export default function Page() {
       document.documentElement.style.overflow = "";
     };
   }, [isDialogOpen]);
-
-  console.log(newProductData);
 
   return (
     <div className={styles.container}>

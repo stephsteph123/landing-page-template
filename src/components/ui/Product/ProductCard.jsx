@@ -7,6 +7,7 @@ export default function ProductCard({
   title = "Testing",
   productCaption = "Placeholder Collection",
   productPrice = "$25",
+  subcription = "",
   onClick = () => console.log("hello world"),
 }) {
   const [isHovered, setIsHovered] = useState(false);
@@ -14,7 +15,7 @@ export default function ProductCard({
   // Handle hover state change for each card
   const handleMouseEnter = () => setIsHovered(true);
   const handleMouseLeave = () => setIsHovered(false);
-
+  console.log(subcription);
   return (
     <div
       className="product-card-container"
@@ -53,7 +54,7 @@ export default function ProductCard({
               </ul>
             </span>
             <div style={{ position: "relative" }}>
-              <span className={`product-price`}>{`$${productPrice}`}</span>
+              <span className={`product-price`}>{`$${productPrice} ${subcription}`}</span>
             </div>
           </div>
         </div>

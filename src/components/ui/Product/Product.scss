@@ -88,7 +88,7 @@
 }
 
 .card-body {
-  height: 210px;
+  height: 230px;
   background: #fff;
   border-radius: 0 0 25px 25px;
 }
@@ -115,6 +115,8 @@
 }
 
 .product-caption {
+  z-index: 100;
+  position: absolute;
   display: block;
   padding: 0 20px;
   font-size: 10px;
@@ -132,6 +134,7 @@
 
 .ul-props {
   margin-left: 27px;
+  margin-bottom: 30px;
 }
 
 .ul-props li {
@@ -155,7 +158,7 @@
   font-size: 24px;
   font-weight: 200;
   right: -20px;
-  top: -30px;
+  top: -25px;
   color: #fff;
   border-radius: 7px;
   transition: all 0.3s ease-in-out;

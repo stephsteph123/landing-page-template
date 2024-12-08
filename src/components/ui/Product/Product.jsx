@@ -1,4 +1,4 @@
-// Product2/Product.js
+// Product/Product.js
 
 "use client";
 
@@ -14,6 +14,7 @@ export default function Product({
       title: "test 1",
       productPrice: 1,
       function: openDialog,
+      subcription: ""
     },
     {
       cardLogo: "/images/placeholder-logo.png",
@@ -21,6 +22,7 @@ export default function Product({
       title: "test 2",
       productPrice: 14,
       function: openDialog,
+      subcription: ""
     },
     {
       cardLogo: "/images/placeholder-logo.png",
@@ -28,6 +30,7 @@ export default function Product({
       title: "test 3",
       productPrice: 147,
       function: openDialog,
+      subcription: ""
     },
   ],
 }) {
@@ -41,6 +44,7 @@ export default function Product({
           title={item.title}
           productPrice={item.productPrice}
           onClick={item.function}
+          subcription={item.subcription}
         />
       ))}
     </div>
