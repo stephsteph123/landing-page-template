@@ -10,6 +10,10 @@
   z-index: 9999;
 }
 
+.wrapper.gone {
+  display: none;
+}
+
 .toastWrapper {
   opacity: 0;
   transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;

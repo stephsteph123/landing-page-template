@@ -30,22 +30,22 @@ export default function Toast({
   }, []);
 
   return (
-    <div className="wrapper">
-      <div className={`toastWrapper ${showMsg ? "show" : ""}`}>
-        <div className={`toast notice`}>
-          <div className="iconContainer">{iconMapping[icon]}</div>
-          <p className="content">{children}</p>
-          <ButtonIcon
-            className="closeButton"
-            onClick={() => setShowMsg(false)}
-            transparent={true}
-            icon="cancel"
-            variant="black"
-            size="small"
-            aria-label="Dismiss Toast Message"
-          />
+        <div className={`wrapper ${showMsg ? "" : "gone"}`}>
+          <div className={`toastWrapper ${showMsg ? "show" : ""}`}>
+            <div className={`toast notice`}>
+              <div className="iconContainer">{iconMapping[icon]}</div>
+              <p className="content">{children}</p>
+              <ButtonIcon
+                className="closeButton"
+                onClick={() => setShowMsg(false)}
+                transparent={true}
+                icon="cancel"
+                variant="black"
+                size="small"
+                aria-label="Dismiss Toast Message"
+              />
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
   );
 }

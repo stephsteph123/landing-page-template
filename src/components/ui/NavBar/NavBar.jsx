@@ -10,6 +10,7 @@ export default function NavBar({
   items = [
     { href: "/", name: "Home" },
     { href: "/", name: "About" },
+    { href: "/", name: "Product" },
     { href: "/", name: "Services" },
     { href: "/", name: "Contact" },
   ],
