@@ -12,6 +12,7 @@ import Form from "@/components/ui/Form/Form";
 import { useContentful } from "@/hooks/useContentful";
 import Dialog from "@/components/ui/Dialog/Dialog";
 import Toast from "@/components/ui/Toast/Toast";
+import Testimonial from "@/components/ui/Testimonial/Testimonial";
 
 // The dynamic page component
 export default function Page() {
@@ -186,7 +187,10 @@ export default function Page() {
         ref={refs.current[2]}
       >
         <Title title="Want to learn more?" />
-        <Form onSubmit={openDialog} />
+        <div style={{display: "flex", justifyContent: "space-around"}}>
+          <Form onSubmit={openDialog} />
+          <Testimonial />
+        </div>
       </div>
     </div>
   );
