@@ -17,6 +17,7 @@ export default function NavBar({
 }) {
   const [showNavBar, setShowNavBar] = useState(false);
   const [top, setTop] = useState(true);
+  const [mobile, setMobile] = useState(false);
   const [menuPosition, setMenuPosition] = useState(80);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
@@ -50,16 +51,15 @@ export default function NavBar({
       const newPosition = Math.max(screenSize / 25);
       if (scrollPosition > 100) {
         setTop(false);
-      } else {
-        setTop(true);
       }
       if (screenSize < 800) {
         setTop(false);
-      } else if (scrollPosition <= 100) {
-        setTop(true);
+        setMobile(true);
       }
       setMenuPosition(newPosition);
     };
+
+    handleScroll();
 
     window.addEventListener("scroll", handleScroll);
     window.addEventListener("resize", handleScroll);
@@ -70,14 +70,12 @@ export default function NavBar({
     };
   }, []);
 
-  function onClick(hello) {
-    console.log(hello);
+  function onClick() {
     setShowNavBar(!showNavBar);
   }
 
   // Dialog Logic
   const openDialog = () => {
-    event.preventDefault();
     setIsDialogOpen(true);
   };
 
@@ -87,7 +85,6 @@ export default function NavBar({
 
   // hooks
   // toggles no scroll on overflow
-
   useEffect(() => {
     // If either isDialogOpen or showNavBar is true, disable scrolling
     if (isDialogOpen || (showNavBar && !top)) {
@@ -134,7 +131,11 @@ export default function NavBar({
             />
           </div>
           <div className={`nav-bar-dialog ${showNavBar ? "show" : ""}`}>
-            <nav className={`nav-bar-parent nav-bar-parent${topVariant}`}>
+            <nav
+              className={`nav-bar-parent ${
+                mobile ? "mobile" : ""
+              } nav-bar-parent${topVariant}`}
+            >
               <div className="nav-bar-cancel">
                 <ButtonIcon
                   onClick={onClick}

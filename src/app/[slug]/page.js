@@ -93,7 +93,7 @@ export default function Page() {
     setMobile(width < 800);
     setIpad(width >= 800 && width < 1200);
   };
-  
+
   // Add an event listener to handle window resizing
   useEffect(() => {
     handleResize(); // Initialize on component mount
@@ -102,7 +102,6 @@ export default function Page() {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
-  
 
   // Observe sections' visibility
   useEffect(() => {
@@ -160,7 +159,6 @@ export default function Page() {
       document.documentElement.style.overflow = "";
     };
   }, [isDialogOpen]);
-  console.log(mobile)
 
   return (
     <div className={styles.container}>
