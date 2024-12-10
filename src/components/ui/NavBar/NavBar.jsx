@@ -56,6 +56,10 @@ export default function NavBar({
         setTop(false);
         setMobile(true);
       }
+      if (scrollPosition < 100 && screenSize > 800) {
+        setTop(true);
+        setMobile(false);
+      }
       setMenuPosition(newPosition);
     };
 

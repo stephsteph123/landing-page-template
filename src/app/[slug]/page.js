@@ -161,7 +161,7 @@ export default function Page() {
   }, [isDialogOpen]);
 
   return (
-    <div className={styles.container}>
+    <div className={mobile ? styles["container mobile"] : styles["container"]}>
       <Dialog isOpen={isDialogOpen} onClose={closeDialog}></Dialog>
       <Toast />
       <div

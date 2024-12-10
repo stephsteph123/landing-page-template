@@ -45,7 +45,7 @@ export default function Banner({
       const screenSize = window.innerWidth;
       // const newHeight = Math.max(screenSize / 2);
       const newFontSize = Math.max(screenSize / 40);
-      const newLogoHeight = Math.max(screenSize / 8);
+      const newLogoHeight = Math.max(screenSize / 7);
       const newLogoWidth = Math.max(screenSize / 4);
       // setHeight(newHeight);
       setNewLogoWidth(newLogoWidth);
@@ -57,6 +57,8 @@ export default function Banner({
         setLogoPositionn("left-top");
       }
     };
+
+    handleResize();
 
     window.addEventListener("resize", handleResize);
 
