@@ -1,10 +1,10 @@
 import React from "react";
 import "./Testimonial.scss";
 
-export default function Testimonial() {
+export default function Testimonial({ mobile }) {
   return (
     <div className="testimonial-parent">
-      <div className="testimonial">
+      <div className={`testimonial ${mobile ? "mobile" : ""}`}>
         <span className="top border"></span>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla

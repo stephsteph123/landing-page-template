@@ -15,7 +15,6 @@ export default function ProductCard({
   // Handle hover state change for each card
   const handleMouseEnter = () => setIsHovered(true);
   const handleMouseLeave = () => setIsHovered(false);
-  console.log(subcription);
   return (
     <div
       className="product-card-container"

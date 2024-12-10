@@ -88,17 +88,21 @@ export default function Page() {
   }
 
   // Set mobile view based on screen size
+  const handleResize = () => {
+    const width = window.innerWidth;
+    setMobile(width < 800);
+    setIpad(width >= 800 && width < 1200);
+  };
+  
+  // Add an event listener to handle window resizing
   useEffect(() => {
-    const handleMobile = () =>
-      setMobile(
-        window.innerWidth < 800
-          ? true
-          : setIpad(window.innerWidth < 1200 ? true : false)
-      );
-    handleMobile();
-    window.addEventListener("resize", handleMobile);
-    return () => window.removeEventListener("resize", handleMobile);
+    handleResize(); // Initialize on component mount
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
   }, []);
+  
 
   // Observe sections' visibility
   useEffect(() => {
@@ -156,6 +160,7 @@ export default function Page() {
       document.documentElement.style.overflow = "";
     };
   }, [isDialogOpen]);
+  console.log(mobile)
 
   return (
     <div className={styles.container}>
@@ -188,9 +193,13 @@ export default function Page() {
         ref={refs.current[2]}
       >
         <Title title="Want to learn more?" />
-        <div style={{display: "flex", justifyContent: "space-around"}}>
+        <div
+          className={
+            mobile ? styles["page-bottom-mobile"] : styles["page-bottom"]
+          }
+        >
           <Form onSubmit={openDialog} />
-          <Testimonial />
+          <Testimonial mobile={mobile} />
         </div>
       </div>
     </div>

@@ -101,4 +101,8 @@
       }
     }
   }
+  &.mobile {
+    transform: translate(0%, 0%);
+    left: 0;
+  }
 }
