@@ -11,6 +11,7 @@ export default function Toast({
   icon = "notice",
 }) {
   const [showMsg, setShowMsg] = useState(false);
+  const [mobile, setMobile] = useState(false);
   const iconMapping = {
     notice: <i className="fa-solid fa-circle-info"></i>,
   };
@@ -28,6 +29,12 @@ export default function Toast({
       setShowMsg(true);
     }, 1000);
   }, []);
+
+  useEffect(() => {
+    const handleResize=() => {
+      const screenSize = window.innerWidth;
+    }
+  },[])
 
   return (
         <div className={`wrapper ${showMsg ? "" : "gone"}`}>
