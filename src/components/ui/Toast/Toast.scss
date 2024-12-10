@@ -8,10 +8,15 @@
   padding: 16px;
   list-style-type: none;
   z-index: 9999;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
 .wrapper.gone {
   display: none;
+}
+
+.wrapper.mobile {
+  width: 400px;
 }
 
 .toastWrapper {
@@ -20,7 +25,7 @@
   transform: translateX(100%);
 }
 
-.toastWrapper.show{
+.toastWrapper.show {
   opacity: 1;
   transform: translateX(0);
 }
