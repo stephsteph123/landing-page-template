@@ -3,7 +3,7 @@ import "./Testimonial.scss";
 
 export default function Testimonial({ mobile }) {
   return (
-    <div className="testimonial-parent">
+    <div className={`testimonial-parent ${mobile ? "mobile" : ""}`}>
       <div className={`testimonial ${mobile ? "mobile" : ""}`}>
         <span className="top border"></span>
         <p>

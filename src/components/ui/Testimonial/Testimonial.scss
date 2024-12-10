@@ -3,6 +3,9 @@
 .testimonial-parent {
   position: relative;
   max-width: 500px;
+  &.mobile{
+    margin: 20px 0px 75px 0px;
+  }
 }
 
 .testimonial {
