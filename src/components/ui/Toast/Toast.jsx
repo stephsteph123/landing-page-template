@@ -44,8 +44,6 @@ export default function Toast({
     };
   }, []);
 
-  console.log(mobile);
-
   return (
     <div
       className={`wrapper ${showMsg ? "" : "gone"}${mobile ? "mobile" : ""}`}

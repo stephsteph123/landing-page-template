@@ -72,7 +72,6 @@ export default async function RootLayout({ children, params }) {
   }
 
   const data = entry.items[0].fields;
-  console.log(data)
 
   // update the imgs to work with next.js
   const bannerImageUrl = data.bannerImage.fields.file.url.startsWith("//")
