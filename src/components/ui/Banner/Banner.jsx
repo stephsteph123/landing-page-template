@@ -68,7 +68,7 @@ export default function Banner({
   }, []);
 
   const customLoader = ({ src, width, quality }) => {
-    return `${src}?w=${width}&q=${quality || 80}`;
+    return `${src}?w=${width}&q=${quality || 90}`;
   };
 
   return (

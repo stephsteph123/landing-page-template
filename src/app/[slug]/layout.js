@@ -4,6 +4,7 @@ import ThemeProvider from "@/components/ThemeProvider/ThemeProvider";
 import NavBar from "@/components/ui/NavBar/NavBar";
 import Footer from "@/components/ui/Footer/Footer";
 import Backdrop from "@/components/ui/Backdrop/Backdrop";
+import AnimatedBackground from "@/components/ui/AnimatedBackground/AnimatedBackground";
 import Banner from "@/components/ui/Banner/Banner";
 import "../globals.css";
 import { createClient } from "contentful";
@@ -54,6 +55,7 @@ export async function generateMetadata({ params }) {
   }
 
   const data = entry.items[0].fields;
+  console.log(data.backgroundVideo.fields.file.url)
 
   return {
     title: data.title,
@@ -74,23 +76,26 @@ export default async function RootLayout({ children, params }) {
   const data = entry.items[0].fields;
 
   // update the imgs to work with next.js
-  const bannerImageUrl = data.bannerImage.fields.file.url.startsWith("//")
+  const bannerImageUrl = data?.bannerImage.fields.file.url.startsWith("//")
     ? `https:${data.bannerImage.fields.file.url}`
     : data.bannerImage.fields.file.url;
 
-  const bannerImagePixelUrl = data.bannerImagePixel.fields.file.url.startsWith(
+  const bannerImagePixelUrl = data?.bannerImagePixel.fields.file.url.startsWith(
     "//"
   )
-    ? `https:${data.bannerImagePixel.fields.file.url}`
+    ? `https:${data?.bannerImagePixel.fields.file.url}`
     : data.bannerImagePixel.fields.file.url;
 
-  const bannerLogoUrl = data.bannerLogo.fields.file.url.startsWith("//")
-    ? `https:${data.bannerLogo.fields.file.url}`
-    : data.bannerImagePixel.fields.file.url;
+  const bannerLogoUrl = data?.bannerLogo.fields.file.url.startsWith("//")
+    ? `https:${data?.bannerLogo.fields.file.url}`
+    : data?.bannerImagePixel.fields.file.url;
 
-  const footerLogoUrl = data.footerLogo.fields.file.url.startsWith("//")
-    ? `https:${data.footerLogo.fields.file.url}`
-    : data.bannerImagePixel.fields.file.url;
+  const footerLogoUrl = data?.footerLogo.fields.file.url.startsWith("//")
+    ? `https:${data?.footerLogo.fields.file.url}`
+    : data?.bannerImagePixel.fields.file.url;
+
+  const backgroundVid = data?.backgroundVideo.fields.file.url.startsWith("//") ?
+  `https:${data?.backgroundVideo.fields.file.url}` : data?.backgroundVideo.fields.file.url;
 
   return (
     <html lang="en">
@@ -101,6 +106,7 @@ export default async function RootLayout({ children, params }) {
           fontFamily={data.themeFontFamily}
         >
           <Backdrop />
+          {/* <AnimatedBackground video={backgroundVid} /> */}
           <NavBar />
           <Banner
             bannerImage={bannerImageUrl}
