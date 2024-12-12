@@ -18,7 +18,7 @@ export default function AnimatedBackground({
 
 const styles = {
   videoContainer: {
-    width: "100vw",
+    width: "90vw",
     height: "100vh",
     display: "flex",
     justifyContent: "center",
