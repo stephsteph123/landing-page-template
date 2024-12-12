@@ -105,8 +105,8 @@ export default async function RootLayout({ children, params }) {
           secondaryColor={data.themeSecondaryColor}
           fontFamily={data.themeFontFamily}
         >
-          <Backdrop />
-          {/* <AnimatedBackground video={backgroundVid} /> */}
+          {/* <Backdrop /> */}
+          <AnimatedBackground video={backgroundVid} />
           <NavBar />
           <Banner
             bannerImage={bannerImageUrl}
