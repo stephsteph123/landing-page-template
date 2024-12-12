@@ -1,17 +1,16 @@
 // AnimatedBackground.js
 import React from "react";
 
-export default function AnimatedBackground({
-  video,
-  children,
-}) {
+export default function AnimatedBackground({ video, children }) {
   return (
     <div style={styles.videoContainer}>
       <video autoPlay muted loop style={styles.video}>
         <source src={video} type="video/mp4" />
         Your browser does not support the video tag.
       </video>
-      <div style={styles.overlay}>{children}</div>
+      <div style={styles.overlay}>
+        {children}
+      </div>
     </div>
   );
 }
@@ -49,10 +48,6 @@ const styles = {
     alignItems: "center",
     color: "white",
     zIndex: 1,
-    backgroundColor: "rgba(0, 0, 0, 0.4)",
-  },
-  heading: {
-    fontSize: "3rem",
-    textAlign: "center",
-  },
+    backgroundColor: "rgba(0, 0, 0, .3)",
+  }
 };

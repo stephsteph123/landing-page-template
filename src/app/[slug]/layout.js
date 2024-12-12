@@ -5,7 +5,8 @@ import NavBar from "@/components/ui/NavBar/NavBar";
 import Footer from "@/components/ui/Footer/Footer";
 import Backdrop from "@/components/ui/Backdrop/Backdrop";
 import AnimatedBackground from "@/components/ui/AnimatedBackground/AnimatedBackground";
-import Banner from "@/components/ui/Banner/Banner";
+// import Banner from "@/components/ui/Banner/Banner";
+import Banner from "@/components/ui/Banner2/Banner";
 import "../globals.css";
 import { createClient } from "contentful";
 
