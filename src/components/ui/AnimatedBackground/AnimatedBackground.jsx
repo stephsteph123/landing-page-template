@@ -2,7 +2,7 @@
 import React from "react";
 
 export default function AnimatedBackground({
-  video = "/images/fog.mp4",
+  video,
   children,
 }) {
   return (
