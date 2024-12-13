@@ -6,9 +6,8 @@ import "./Banner.scss";
 import Image from "next/image";
 
 export default function Banner({
-  titlePosition,
   bannerImage = "/images/placeholder-image-1-public.png",
-  // blurDataURL = "/images/placeholder-image-1-public-pixel.png",
+  blurDataURL = "/images/placeholder-image-1-public-pixel.png",
   bannerLogo = "/images/placeholder-banner-logo-public.png",
   opacity,
   logoHeight = 150,
@@ -77,8 +76,10 @@ export default function Banner({
           <Image
             alt="Background Image"
             src={bannerImage}
-            layout="fill" 
-            objectFit="cover" 
+            layout="fill"
+            objectFit="cover"
+            blurDataURL={blurDataURL}
+            placeholder="blur"
             quality={100}
           />
           {/* <h2 className="title">LVNEA</h2> */}

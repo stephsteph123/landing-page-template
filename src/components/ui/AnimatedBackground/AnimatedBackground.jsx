@@ -8,9 +8,7 @@ export default function AnimatedBackground({ video, children }) {
         <source src={video} type="video/mp4" />
         Your browser does not support the video tag.
       </video>
-      <div style={styles.overlay}>
-        {children}
-      </div>
+      <div style={styles.overlay}>{children}</div>
     </div>
   );
 }
@@ -48,6 +46,7 @@ const styles = {
     alignItems: "center",
     color: "white",
     zIndex: 1,
-    backgroundColor: "rgba(0, 0, 0, .3)",
-  }
+    // backgroundColor: "rgba(0, 0, 0, .3)",
+    backgroundColor: "rgba(var(--primary-color-rgb), .3)",
+  },
 };
