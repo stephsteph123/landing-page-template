@@ -183,8 +183,12 @@ export default function Page() {
         className={viewed[1] ? styles["page-view-active"] : styles["page-view"]}
         ref={refs.current[1]}
       >
-        <Title title="Our Story" />
-        <AboutUs mobile={mobile} images={newAboutData} />
+        <div className={styles["full-width-background"]}>
+          <div className={styles["page-middle"]}>
+            <Title title="Our Story" />
+            <AboutUs mobile={mobile} images={newAboutData} />
+          </div>
+        </div>
       </div>
       <div
         className={viewed[2] ? styles["page-view-active"] : styles["page-view"]}

@@ -2,9 +2,8 @@
   font-family: var(--font-family);
   display: flex;
   flex-direction: column;
-  width: 80%;
   justify-self: center;
-
+  width: 90%;
   &.mobile {
     width: 100%;
   }
@@ -22,6 +21,23 @@
   transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
   transform: translateY(0);
   margin: 20px 0px 50px 0px;
+}
+
+.full-width-background {
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  width: 100vw;
+  background-color: var(--primary-color);
+}
+
+.page-middle {
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
+  width: 90%;
 }
 
 .page-bottom {
