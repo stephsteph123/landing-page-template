@@ -1,17 +1,26 @@
 .banner {
-  height: auto;
   position: relative;
+  height: auto;
 
   .banner-content {
     position: relative;
-  }
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    padding: 0 20px;
 
-  .banner-content-img {
-    width: 100%;
-    height: auto;
-    display: block;
-    object-fit: cover;
-    opacity: 1;
-    transition: opacity 0.5s ease-in-out;
+    .title {
+      font-size: 4rem;
+      font-weight: 700;
+      color: white;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      text-shadow: 2px 2px 15px rgba(0, 0, 0, 0.6);
+      max-width: 90%;
+      z-index: 1;
+      font-family: var(--font-family);
+    }
   }
 }

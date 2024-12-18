@@ -1,22 +1,17 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import BannerTitle from "./Title/BannerTitle";
 import BannerLogo from "./Logo/BannerLogo";
 import "./Banner.scss";
 import Image from "next/image";
 
 export default function Banner({
-  titlePosition,
   bannerImage = "/images/placeholder-image-1-public.png",
   blurDataURL = "/images/placeholder-image-1-public-pixel.png",
-  variant,
-  fontFamily,
-  showLogo = true,
   bannerLogo = "/images/placeholder-banner-logo-public.png",
   opacity,
   logoHeight = 150,
-  logoWidth = 300
+  logoWidth = 300,
 }) {
   const [scale, setScale] = useState(1);
   // const [height, setHeight] = useState(800);
@@ -67,27 +62,9 @@ export default function Banner({
     };
   }, []);
 
-  const customLoader = ({ src, width, quality }) => {
-    return `${src}?w=${width}&q=${quality || 90}`;
-  };
-
   return (
     <header className="banner" style={{ transform: `scale(${scale})` }}>
       <div className="banner-content">
-        <Image
-        className="banner-content-img"
-          loader={customLoader}
-          src={bannerImage}
-          alt="Background Image"
-          height={800}
-          width={400}
-          placeholder="blur"
-          quality={100}
-          blurDataURL={blurDataURL}
-          priority
-        />
-      </div>
-      {showLogo ? (
         <BannerLogo
           bannerLogo={bannerLogo}
           logoPosition={logoPosition}
@@ -95,14 +72,19 @@ export default function Banner({
           logoHeight={newLogoHeight}
           logoWidth={newLogoWidth}
         />
-      ) : (
-        <BannerTitle
-          fontSize={fontSize}
-          titlePosition={titlePosition}
-          variant={variant}
-          fontFamily={fontFamily}
-        />
-      )}
+        <div className="banner-img">
+          <Image
+            alt="Background Image"
+            src={bannerImage}
+            layout="fill"
+            objectFit="cover"
+            blurDataURL={blurDataURL}
+            placeholder="blur"
+            quality={100}
+          />
+          {/* <h2 className="title">LVNEA</h2> */}
+        </div>
+      </div>
     </header>
   );
 }

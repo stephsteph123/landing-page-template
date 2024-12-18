@@ -1,12 +1,12 @@
 // app/[slug]/layout.js
 
 import ThemeProvider from "@/components/ThemeProvider/ThemeProvider";
-import NavBar from "@/components/ui/NavBar/NavBar";
+// import NavBar from "@/components/ui/NavBar/NavBar";
+import NavBar from "@/components/ui/NavBar2/NavBar";
 import Footer from "@/components/ui/Footer/Footer";
-import Backdrop from "@/components/ui/Backdrop/Backdrop";
+// import Backdrop from "@/components/ui/Backdrop/Backdrop";
 import AnimatedBackground from "@/components/ui/AnimatedBackground/AnimatedBackground";
-// import Banner from "@/components/ui/Banner/Banner";
-import Banner from "@/components/ui/Banner2/Banner";
+import Banner from "@/components/ui/Banner/Banner";
 import "../globals.css";
 import { createClient } from "contentful";
 
@@ -56,7 +56,6 @@ export async function generateMetadata({ params }) {
   }
 
   const data = entry.items[0].fields;
-  console.log(data.backgroundVideo.fields.file.url)
 
   return {
     title: data.title,
