@@ -1,8 +1,7 @@
 // app/[slug]/layout.js
 
 import ThemeProvider from "@/components/ThemeProvider/ThemeProvider";
-// import NavBar from "@/components/ui/NavBar/NavBar";
-import NavBar from "@/components/ui/NavBar2/NavBar";
+import NavBar from "@/components/ui/NavBar/NavBar";
 import Footer from "@/components/ui/Footer/Footer";
 // import Backdrop from "@/components/ui/Backdrop/Backdrop";
 import AnimatedBackground from "@/components/ui/AnimatedBackground/AnimatedBackground";

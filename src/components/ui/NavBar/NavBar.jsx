@@ -1,12 +1,13 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
+import { motion, useCycle } from "framer-motion";
+import { MenuToggle } from "./MenuToggle";
+import { Navigation } from "./Navigation";
+import Dialog from "../Dialog/Dialog";
 import "./NavBar.scss";
-import ButtonIcon from "../Icon/ButtonIcon";
-import Dialog from "@/components/ui/Dialog/Dialog";
 
-export default function NavBar({
-  topVariant = "--white-transparent",
+export const NavBar = ({
   items = [
     { href: "/", name: "Home" },
     { href: "/", name: "About" },
@@ -14,69 +15,27 @@ export default function NavBar({
     { href: "/", name: "Services" },
     { href: "/", name: "Contact" },
   ],
-}) {
-  const [showNavBar, setShowNavBar] = useState(false);
-  const [top, setTop] = useState(true);
+}) => {
+  const [isOpen, toggleOpen] = useCycle(false, true);
+  const containerRef = useRef(null);
+  // const { height } = useDimensions(containerRef);
+  const [top, setTop] = useState(false);
   const [mobile, setMobile] = useState(false);
-  const [menuPosition, setMenuPosition] = useState(80);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
-  //decode props
-  const biVariant = {
-    "--primary-gradient": "primary",
-    "--primary-transparent": "primary",
-    "--secondary-gradient": "secondary",
-    "--secondary-transparent": "secondary",
-    "--white-gradient": "primary",
-    "--white-transparent": "primary",
-    "--black-gradient": "primary",
-    "--black-transparent": "primary",
-  };
-
-  const arrowVariant = {
-    "--primary-gradient": "secondary",
-    "--primary-transparent": "secondary",
-    "--secondary-gradient": "primary",
-    "--secondary-transparent": "primary",
-    "--white-gradient": "secondary",
-    "--white-transparent": "secondary",
-    "--black-gradient": "secondary",
-    "--black-transparent": "secondary",
-  };
-
   useEffect(() => {
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY;
-      const screenSize = window.innerWidth;
-      const newPosition = Math.max(screenSize / 25);
-      if (scrollPosition > 100) {
-        setTop(false);
-      }
-      if (screenSize < 800) {
-        setTop(false);
-        setMobile(true);
-      }
-      if (scrollPosition < 100 && screenSize > 800) {
-        setTop(true);
-        setMobile(false);
-      }
-      setMenuPosition(newPosition);
-    };
+    // If either isDialogOpen or showNavBar is true, disable scrolling
+    if (isOpen) {
+      document.documentElement.style.overflow = "hidden";
+    } else {
+      document.documentElement.style.overflow = "";
+    }
 
-    handleScroll();
-
-    window.addEventListener("scroll", handleScroll);
-    window.addEventListener("resize", handleScroll);
-
+    // Cleanup on unmount or when dependencies change
     return () => {
-      window.removeEventListener("scroll", handleScroll);
-      window.removeEventListener("resize", handleScroll);
+      document.documentElement.style.overflow = "";
     };
-  }, []);
-
-  function onClick() {
-    setShowNavBar(!showNavBar);
-  }
+  }, [isOpen]);
 
   // Dialog Logic
   const openDialog = () => {
@@ -87,28 +46,51 @@ export default function NavBar({
     setIsDialogOpen(false);
   };
 
-  // hooks
-  // toggles no scroll on overflow
+  // Scroll and Resize Logic
   useEffect(() => {
-    // If either isDialogOpen or showNavBar is true, disable scrolling
-    if (isDialogOpen || (showNavBar && !top)) {
-      document.documentElement.style.overflow = "hidden";
-    } else {
-      document.documentElement.style.overflow = "";
-    }
-
-    // Cleanup on unmount or when dependencies change
-    return () => {
-      document.documentElement.style.overflow = "";
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      const resize = window.innerWidth;
+      if (scrollY < 100 && resize > 800) {
+        setTop(true);
+      } else {
+        setTop(false);
+      }
     };
-  }, [isDialogOpen, showNavBar, top]);
+
+    handleScroll();
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  // size logic
+  useEffect(() => {
+    const handleResize = () => {
+      const resize = window.innerWidth;
+      if (resize < 800) {
+        setMobile(true);
+      } else {
+        setMobile(false);
+      }
+    };
+
+    handleResize();
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   return (
     <>
-      <Dialog isOpen={isDialogOpen} onClose={closeDialog}></Dialog>
-      <nav
-        className={`top-nav-bar ${top ? "show" : ""} top-nav-bar${topVariant}`}
-      >
+      <nav className={`top-nav-bar ${top ? "show" : ""}`}>
+        <Dialog isOpen={isDialogOpen} onClose={closeDialog}></Dialog>
         <ul className="top-nav-bar-list">
           {items.map((item, index) => (
             <li
@@ -122,51 +104,21 @@ export default function NavBar({
         </ul>
       </nav>
       {!top && (
-        <>
-          <div className={`nav-bar-overlay ${showNavBar ? "show" : ""}`} />
-          <div
-            className="nav-bar-menu-button"
-            style={{ top: menuPosition, right: menuPosition }}
-          >
-            <ButtonIcon
-              onClick={onClick}
-              icon="menu"
-              variant={biVariant[topVariant]}
-            />
-          </div>
-          <div className={`nav-bar-dialog ${showNavBar ? "show" : ""}`}>
-            <nav
-              className={`nav-bar-parent ${
-                mobile ? "mobile" : ""
-              } nav-bar-parent${topVariant}`}
-            >
-              <div className="nav-bar-cancel">
-                <ButtonIcon
-                  onClick={onClick}
-                  icon="cancel"
-                  variant={biVariant[topVariant]}
-                  size="small"
-                />
-              </div>
-              <ul>
-                {items.map((item, index) => (
-                  <li key={index} onClick={() => openDialog()}>
-                    <a href="#home">{item.name}</a>
-                    <div className="navbar-arrow">
-                      <ButtonIcon
-                        icon="arrow"
-                        variant={arrowVariant[topVariant]}
-                        size="large"
-                        transparent
-                      />
-                    </div>
-                  </li>
-                ))}
-              </ul>
-            </nav>
-          </div>
-        </>
+        <motion.nav
+          initial={false}
+          animate={isOpen ? "open" : "closed"}
+          ref={containerRef}
+        >
+          <motion.div
+            className={`nav-bar-dialog ${isOpen ? "show" : ""}`}
+            onClick={() => toggleOpen()}
+          />
+          <Navigation isOpen={isOpen} items={items} mobile={mobile} />
+          <MenuToggle toggle={() => toggleOpen()} />
+        </motion.nav>
       )}
     </>
   );
-}
+};
+
+export default NavBar;
