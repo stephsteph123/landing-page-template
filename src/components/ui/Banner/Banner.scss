@@ -14,10 +14,10 @@
     .title {
       font-size: 4rem;
       font-weight: 700;
-      color: white;
+      color: var(--secondary-color);
       text-transform: uppercase;
       letter-spacing: 2px;
-      text-shadow: 2px 2px 15px rgba(0, 0, 0, 0.6);
+      text-shadow: 2px 2px 15px rgba(var(--primary-color-rgb), 0.6);
       max-width: 90%;
       z-index: 1;
       font-family: var(--font-family);

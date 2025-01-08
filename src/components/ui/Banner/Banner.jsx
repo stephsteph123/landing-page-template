@@ -40,7 +40,7 @@ export default function Banner({
     const handleResize = () => {
       const screenSize = window.innerWidth;
       // const newHeight = Math.max(screenSize / 2);
-      const newFontSize = Math.max(screenSize / 30);
+      const newFontSize = Math.max(screenSize / 20);
       const newLogoHeight = Math.max(screenSize / 7);
       const newLogoWidth = Math.max(screenSize / 4);
       // setHeight(newHeight);
