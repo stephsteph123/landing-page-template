@@ -45,6 +45,11 @@ nav {
   border-radius: 6px;
   background-color: var(--primary-color);
   z-index: 1000;
+
+  &.mobile{
+    top: 30px;
+    right: 50px;
+  }
 }
 
 .motion-li {

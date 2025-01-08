@@ -11,8 +11,8 @@ const Path = (props) => (
   />
 );
 
-export const MenuToggle = ({ toggle }) => (
-  <button onClick={toggle} className="motion-button">
+export const MenuToggle = ({ toggle, mobile }) => (
+  <button onClick={toggle} className={`motion-button ${mobile ? "mobile" : ""}`}>
     <svg width="22" height="20" viewBox="0 0 21 20">
       <Path
         variants={{

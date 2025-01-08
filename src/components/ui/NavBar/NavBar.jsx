@@ -114,7 +114,7 @@ export const NavBar = ({
             onClick={() => toggleOpen()}
           />
           <Navigation isOpen={isOpen} items={items} mobile={mobile} />
-          <MenuToggle toggle={() => toggleOpen()} />
+          <MenuToggle toggle={() => toggleOpen()} mobile={mobile}/>
         </motion.nav>
       )}
     </>

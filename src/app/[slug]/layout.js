@@ -75,26 +75,28 @@ export default async function RootLayout({ children, params }) {
   const data = entry.items[0].fields;
 
   // update the imgs to work with next.js
-  const bannerImageUrl = data?.bannerImage.fields.file.url.startsWith("//")
+  const bannerImageUrl = data?.bannerImage?.fields?.file?.url?.startsWith("//")
     ? `https:${data.bannerImage.fields.file.url}`
-    : data.bannerImage.fields.file.url;
+    : null;
 
-  const bannerImagePixelUrl = data?.bannerImagePixel.fields.file.url.startsWith(
-    "//"
-  )
-    ? `https:${data?.bannerImagePixel.fields.file.url}`
-    : data.bannerImagePixel.fields.file.url;
+  const bannerImagePixelUrl =
+    data?.bannerImagePixel?.fields?.file?.url?.startsWith("//")
+      ? `https:${data?.bannerImagePixel.fields.file.url}`
+      : null;
 
-  const bannerLogoUrl = data?.bannerLogo.fields.file.url.startsWith("//")
-    ? `https:${data?.bannerLogo.fields.file.url}`
-    : data?.bannerImagePixel.fields.file.url;
+  const bannerLogoUrl = data?.bannerLogo?.fields?.file?.url?.startsWith("//")
+    ? `https:${data.bannerLogo.fields.file.url}`
+    : null;
+
+  const bannerTitle = data?.bannerTitle ? data.bannerTitle : null;
 
   const footerLogoUrl = data?.footerLogo.fields.file.url.startsWith("//")
     ? `https:${data?.footerLogo.fields.file.url}`
     : data?.bannerImagePixel.fields.file.url;
 
-  const backgroundVid = data?.backgroundVideo.fields.file.url.startsWith("//") ?
-  `https:${data?.backgroundVideo.fields.file.url}` : data?.backgroundVideo.fields.file.url;
+  const backgroundVid = data?.backgroundVideo.fields.file.url.startsWith("//")
+    ? `https:${data?.backgroundVideo.fields.file.url}`
+    : data?.backgroundVideo.fields.file.url;
 
   return (
     <html lang="en">
@@ -113,6 +115,7 @@ export default async function RootLayout({ children, params }) {
             bannerLogo={bannerLogoUrl}
             logoHeight={data.logoHeight}
             logoWidth={data.logoWidth}
+            bannerTitle={bannerTitle}
           />
           {children}
           <Footer companyLogo={footerLogoUrl} />

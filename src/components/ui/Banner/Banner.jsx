@@ -6,9 +6,10 @@ import "./Banner.scss";
 import Image from "next/image";
 
 export default function Banner({
-  bannerImage = "/images/placeholder-image-1-public.png",
-  blurDataURL = "/images/placeholder-image-1-public-pixel.png",
-  bannerLogo = "/images/placeholder-banner-logo-public.png",
+  bannerImage,
+  blurDataURL,
+  bannerLogo,
+  bannerTitle,
   opacity,
   logoHeight = 150,
   logoWidth = 300,
@@ -39,7 +40,7 @@ export default function Banner({
     const handleResize = () => {
       const screenSize = window.innerWidth;
       // const newHeight = Math.max(screenSize / 2);
-      const newFontSize = Math.max(screenSize / 40);
+      const newFontSize = Math.max(screenSize / 30);
       const newLogoHeight = Math.max(screenSize / 7);
       const newLogoWidth = Math.max(screenSize / 4);
       // setHeight(newHeight);
@@ -62,28 +63,38 @@ export default function Banner({
     };
   }, []);
 
+  console.log(bannerTitle);
+
   return (
     <header className="banner" style={{ transform: `scale(${scale})` }}>
       <div className="banner-content">
-        <BannerLogo
-          bannerLogo={bannerLogo}
-          logoPosition={logoPosition}
-          opacity={opacity}
-          logoHeight={newLogoHeight}
-          logoWidth={newLogoWidth}
-        />
-        <div className="banner-img">
-          <Image
-            alt="Background Image"
-            src={bannerImage}
-            layout="fill"
-            objectFit="cover"
-            blurDataURL={blurDataURL}
-            placeholder="blur"
-            quality={100}
+        {bannerLogo && (
+          <BannerLogo
+            bannerLogo={bannerLogo}
+            logoPosition={logoPosition}
+            opacity={opacity}
+            logoHeight={newLogoHeight}
+            logoWidth={newLogoWidth}
           />
-          {/* <h2 className="title">LVNEA</h2> */}
+        )}
+        <div className="banner-img">
+          {bannerImage && (
+            <Image
+              alt="Background Image"
+              src={bannerImage}
+              layout="fill"
+              objectFit="cover"
+              blurDataURL={blurDataURL}
+              placeholder="blur"
+              quality={100}
+            />
+          )}
         </div>
+        {bannerTitle && (
+          <h2 className="title" style={{ fontSize: fontSize }}>
+            {bannerTitle}
+          </h2>
+        )}
       </div>
     </header>
   );

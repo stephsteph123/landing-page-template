@@ -133,7 +133,7 @@ export default function Home() {
           ref={refs.current[2]}
         >
           <Title title="Want to learn more?" />
-          <Form />
+          <Form/>
         </div>
       </div>
       <Footer />
